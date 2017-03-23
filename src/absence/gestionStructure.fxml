@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="423.0" prefWidth="623.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="absence.GestionStructureController">
+   <children>
+      <Label layoutX="15.0" layoutY="14.0" text="GESTION DE STRUCTURES">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <TabPane layoutX="15.0" layoutY="117.0" prefHeight="286.0" prefWidth="571.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Filière">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="30.0" layoutY="25.0" text="ID" />
+                        <TextField fx:id="txtFiliere" layoutX="86.0" layoutY="21.0" />
+                        <Label layoutX="30.0" layoutY="61.0" text="Nom" />
+                        <Button fx:id="DeleteF" layoutX="135.0" layoutY="153.0" mnemonicParsing="false" onAction="#onDeleteFil" text="Delete" visible="false" />
+                        <Button fx:id="BtnOk" layoutX="203.0" layoutY="153.0" mnemonicParsing="false" onAction="#btnOkFil" text="Ok" />
+                        <TableView fx:id="TableF" editable="true" layoutX="255.0" layoutY="21.0" onMouseClicked="#mouseclickFil" prefHeight="230.0" prefWidth="309.0">
+                          <columns>
+                            <TableColumn fx:id="ColNomF" prefWidth="61.0" text="ID" />
+                              <TableColumn fx:id="ColDescr" prefWidth="248.0" text="Nom" />
+                          </columns>
+                        </TableView>
+                        <TextArea fx:id="FDesc" layoutX="85.0" layoutY="56.0" prefHeight="84.0" prefWidth="150.0" wrapText="true" />
+                        <Button fx:id="btnCancel" cancelButton="true" layoutX="72.0" layoutY="153.0" mnemonicParsing="false" onAction="#btnCancel" text="Cancel" visible="false" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Classe">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="btnDelete" layoutX="145.0" layoutY="124.0" mnemonicParsing="false" onAction="#onDeleteClass" text="Delete" visible="false" />
+                        <Button fx:id="okbutton" layoutX="204.0" layoutY="124.0" mnemonicParsing="false" onAction="#onOkclasse" text="Ok" />
+                        <ComboBox fx:id="comboFiliere" layoutX="85.0" layoutY="63.0" prefWidth="150.0" />
+                        <Label layoutX="21.0" layoutY="28.0" text="Nom" />
+                        <Label layoutX="18.0" layoutY="67.0" text="Filière" />
+                        <TableView fx:id="TableC" layoutX="255.0" layoutY="21.0" onMouseClicked="#mouseclickClass" prefHeight="230.0" prefWidth="309.0">
+                          <columns>
+                            <TableColumn fx:id="colNameC" prefWidth="106.0" text="Nom" />
+                            <TableColumn fx:id="colFilClass" prefWidth="96.0" text="Filière" />
+                              <TableColumn fx:id="colEff" prefWidth="91.0" text="Effectif" />
+                          </columns>
+                        </TableView>
+                        <TextField fx:id="NomC" layoutX="87.0" layoutY="24.0" />
+                        <Button fx:id="btnCancelC" layoutX="85.0" layoutY="124.0" mnemonicParsing="false" onAction="#btnCancelC" text="Cancel" visible="false" />
+                        <Button fx:id="uploadClass" layoutX="21.0" layoutY="186.0" mnemonicParsing="false" onAction="#onBtnUploadUsers" text="Uploader Classe" />
+                        <Button fx:id="okUpload" layoutX="128.0" layoutY="186.0" mnemonicParsing="false" onAction="#onBtnOkUpload" prefHeight="25.0" prefWidth="35.0" text="Ok" />
+                        <Button fx:id="cancelUpload" layoutX="170.0" layoutY="186.0" mnemonicParsing="false" onAction="#onBtnCancelUpload" text="Annuler" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <Hyperlink fx:id="linkAccueil" layoutX="145.0" layoutY="62.0" onAction="#onAccueil" text="Accueil" />
+      <Hyperlink layoutX="248.0" layoutY="62.0" text="Profs" textAlignment="CENTER" />
+      <Hyperlink layoutX="330.0" layoutY="62.0" text="Structures" />
+      <Separator layoutX="217.0" layoutY="62.0" orientation="VERTICAL" prefHeight="23.0" prefWidth="5.0">
+         <effect>
+            <ColorAdjust brightness="-0.42" contrast="-0.23" hue="-0.53" saturation="-0.93" />
+         </effect>
+      </Separator>
+      <Separator layoutX="309.0" layoutY="62.0" orientation="VERTICAL" prefHeight="23.0" prefWidth="5.0">
+         <effect>
+            <ColorAdjust brightness="-0.42" contrast="-0.23" hue="-0.53" saturation="-0.93" />
+         </effect>
+      </Separator>
+   </children>
+</AnchorPane>
