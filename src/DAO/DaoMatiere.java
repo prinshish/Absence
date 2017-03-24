@@ -44,20 +44,21 @@ public class DaoMatiere {
         if (Rs.next()) return true;
         return false;
     }
-       public void addMatiere(String nom, String module , int prof){
+       public void addMatiere(String idMat,String nom, String module , int prof){
         Statement St;
         try{
-            PreparedStatement pst = MaConnexion.prepareStatement("insert into matiere (id_module , id_personne,nom) values(?,?,?)");
-            pst.setString(1,module);
-            pst.setInt(2,prof);
-            pst.setString(3,nom);
+            PreparedStatement pst = MaConnexion.prepareStatement("insert into matiere  values(?,?,?,?)");
+            pst.setString(1,idMat);
+            pst.setString(2,module);
+            pst.setInt(3,prof);
+            pst.setString(4,nom);
             pst.executeUpdate();
         }
         catch(SQLException ex){
             System.err.println("erreur d'ajout Matiere "+ex.getMessage());
         }
        }
-       public void updateMatiere( String id_module ,String Nom ,int id_prof, int id_matiere) 
+       public void updateMatiere( String id_module ,String Nom ,int id_prof, String id_matiere) 
     {
     try 
         {
@@ -66,7 +67,7 @@ public class DaoMatiere {
             pst.setString(1, id_module);
             pst.setInt(2,id_prof) ;
              pst.setString(3,Nom) ;
-             pst.setInt(4,id_matiere);
+             pst.setString(4,id_matiere);
            
             pst.executeUpdate();
         } 
@@ -76,11 +77,11 @@ public class DaoMatiere {
         }
         
     }
-       public void deleteMatiere (int id_matiere){
+       public void deleteMatiere (String id_matiere){
             try{
                 System.out.println("deleting");
             PreparedStatement pst = MaConnexion.prepareStatement("delete from matiere where id_matiere=?");
-            pst.setInt(1,id_matiere);
+            pst.setString(1,id_matiere);
             pst.executeUpdate();
         }
         catch(SQLException ex){
@@ -93,7 +94,7 @@ public class DaoMatiere {
         
        
         try{
-              PreparedStatement St=MaConnexion.prepareStatement("Select matiere.nom,module.id_module,personne.nom,personne.prenom from matiere join module on matiere.id_module=module.id_module join personne on matiere.id_personne=personne.id_personne where personne.type='prof'");
+              PreparedStatement St=MaConnexion.prepareStatement("Select matiere.id_matiere , matiere.nom,module.id_module,personne.nom,personne.prenom from matiere join module on matiere.id_module=module.id_module join personne on matiere.id_personne=personne.id_personne where personne.type='prof'");
             
               Rs=St.executeQuery();
             

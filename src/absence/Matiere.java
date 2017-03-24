@@ -10,23 +10,15 @@ import java.util.*;
 
 
 public class Matiere {
-   private int id_matiere;
-   private String Nomprof,preProf,NomMatiere;
+  
+   private String id_matiere, Nomprof,preProf,NomMatiere;
      private String Module;
 
-    public Matiere(String NomMatiere, String Module , String Nomprof, String preProf) {
-      //  this.id_matiere = id_matiere;
-        this.Nomprof = Nomprof;
-        this.preProf = preProf;
-        this.NomMatiere = NomMatiere;
-        this.Module = Module;
-    }
-
-    public int getId_matiere() {
+    public String getId_matiere() {
         return id_matiere;
     }
 
-    public void setId_matiere(int id_matiere) {
+    public void setId_matiere(String id_matiere) {
         this.id_matiere = id_matiere;
     }
 
@@ -62,5 +54,12 @@ public class Matiere {
         this.Module = Module;
     }
 
-  
+    public Matiere(String id_matiere, String Module, String Nomprof, String preProf, String NomMatiere) {
+        this.id_matiere = id_matiere;
+        this.Nomprof = Nomprof;
+        this.preProf = preProf;
+        this.NomMatiere = NomMatiere;
+        this.Module = Module;
+    }
+
 }

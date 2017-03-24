@@ -128,6 +128,8 @@ public class GestionModuleController1 implements Initializable {
     private ComboBox<String> comboProf;
     @FXML
     private TextField txtIDM;
+    @FXML
+    private TableColumn<Matiere, String> ColIdMatiere;
 
     
     
@@ -147,6 +149,7 @@ public class GestionModuleController1 implements Initializable {
        colNomProf.setCellValueFactory(new PropertyValueFactory<Matiere,String> ("NomProf"));
        colPreProf.setCellValueFactory(new PropertyValueFactory<Matiere,String> ("preProf"));
        colModule.setCellValueFactory(new PropertyValueFactory<Matiere,String> ("Module"));
+       ColIdMatiere.setCellValueFactory(new PropertyValueFactory<Matiere,String> ("id_matiere"));
        actualiser_Mod();
 //       actualiser_C();
        show_in_textfiled_Mod(); 
@@ -416,6 +419,7 @@ public class GestionModuleController1 implements Initializable {
          btnDelete.setVisible(true);
         btnCancelM.setVisible(true);
         okbutton.setText("Edit");
+        txtIDM.setDisable(true);
     }
 
     @FXML
@@ -423,7 +427,7 @@ public class GestionModuleController1 implements Initializable {
            btnDelete.setVisible(false);
         btnCancelM.setVisible(false);
         okbutton.setText("Ok");
-       // txtModule.setDisable(false);
+       txtIDM.setDisable(false);
         fillComboMo();
         fillComboP();
         clear_Mat();
@@ -431,31 +435,33 @@ public class GestionModuleController1 implements Initializable {
 
     @FXML
     private void onDeleteMat(ActionEvent event) {
-         //daoM.deleteMatiere(Integer.parseInt(txtIDM.getText()));
-         daoM.deleteMatiere(11);
+         daoM.deleteMatiere(txtIDM.getText());
+       // daoM.deleteMatiere(11);
          actualiser_Mat();
     }
 
     @FXML
     private void onOkMatiere(ActionEvent event) {
-         if(btnOkMod.getText()=="Edit"){
-        //daoM.updateMatiere(comboModule.getValue(),NomC.getText(),daoM.getIdProf(comboProf.getValue()),Integer.parseInt(txtIDM.getText()) );
-         daoM.updateMatiere(comboModule.getValue(),NomC.getText(),daoM.getIdProf(comboProf.getValue()),9);
+         if(okbutton.getText()=="Edit"){
+        daoM.updateMatiere(comboModule.getValue(),NomC.getText(),daoM.getIdProf(comboProf.getValue()),txtIDM.getText());
+        // daoM.updateMatiere(comboModule.getValue(),NomC.getText(),daoM.getIdProf(comboProf.getValue()),9);
        System.out.println("id mat"+Integer.parseInt(txtIDM.getText()));
          }
          
         else {
-        daoM.addMatiere(NomC.getText(),comboModule.getValue(), daoM.getIdProf(comboProf.getValue()));
+        daoM.addMatiere(txtIDM.getText(), NomC.getText(),comboModule.getValue(), daoM.getIdProf(comboProf.getValue()));
         }
         actualiser_Mat();
     }
     private void actualiser_Mat(){
  TableM.getItems().clear();
         ResultSet Rs = daoM.PrintM();
+        System.out.println("Try");
          try {
          while ( Rs.next())
            {
-           Data_Mat.add(new Matiere(Rs.getString(1),Rs.getString(2),Rs.getString(4),Rs.getString(3)));
+               System.out.println("keep Trying");
+           Data_Mat.add(new Matiere(Rs.getString(1),Rs.getString(3),Rs.getString(4),Rs.getString(5),Rs.getString(2)));
            TableM.setItems(null);
            TableM.setItems(Data_Mat);   
            }
@@ -519,7 +525,7 @@ public class GestionModuleController1 implements Initializable {
         if(TableM.getSelectionModel().getSelectedItem() != null) 
         {
        
-        txtIDM.setText(String.valueOf((newValue.getId_matiere())));
+        txtIDM.setText(newValue.getId_matiere());
         NomC.setText(newValue.getNomMatiere());
         comboProf.setValue(newValue.getNomprof());
         comboModule.setValue(newValue.getModule());
