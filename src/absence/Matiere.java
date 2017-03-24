@@ -8,14 +8,59 @@ package absence;
 
 import java.util.*;
 
-/** @pdOid afb990b3-657d-46e7-95eb-9989ef6bb88d */
+
 public class Matiere {
-   /** @pdOid be4a93f8-780c-483e-9146-ab3037df6779 */
    private int id_matiere;
-   /** @pdOid 32e90f09-a9f3-401a-9b52-4e16f6a178ba */
-   private String nom;
+   private String Nomprof,preProf,NomMatiere;
+     private String Module;
 
-   
-   
+    public Matiere(String NomMatiere, String Module , String Nomprof, String preProf) {
+      //  this.id_matiere = id_matiere;
+        this.Nomprof = Nomprof;
+        this.preProf = preProf;
+        this.NomMatiere = NomMatiere;
+        this.Module = Module;
+    }
 
+    public int getId_matiere() {
+        return id_matiere;
+    }
+
+    public void setId_matiere(int id_matiere) {
+        this.id_matiere = id_matiere;
+    }
+
+    public String getNomprof() {
+        return Nomprof;
+    }
+
+    public void setNomprof(String Nomprof) {
+        this.Nomprof = Nomprof;
+    }
+
+    public String getPreProf() {
+        return preProf;
+    }
+
+    public void setPreProf(String preProf) {
+        this.preProf = preProf;
+    }
+
+    public String getNomMatiere() {
+        return NomMatiere;
+    }
+
+    public void setNomMatiere(String NomMatiere) {
+        this.NomMatiere = NomMatiere;
+    }
+
+    public String getModule() {
+        return Module;
+    }
+
+    public void setModule(String Module) {
+        this.Module = Module;
+    }
+
+  
 }

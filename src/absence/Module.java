@@ -19,6 +19,10 @@ public class Module {
         this.nom = nom;
         this.id_classe=id_classe;
     }
+
+    public Module(String id_module) {
+        this.id_module = id_module;
+    }
     
 
     public String getId_module() {

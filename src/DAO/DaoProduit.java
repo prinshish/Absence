@@ -16,7 +16,7 @@ public class DaoProduit {
     public DaoProduit(){
         dao=new DAO();
         dao.setPilote("com.mysql.jdbc.Driver");
-        dao.setURL("jdbc:mysql://localhost:3306/absence2");
+        dao.setURL("jdbc:mysql://localhost:3306/absence");
         dao.setLogin("root");
         dao.setPasswd("");
         dao.ToConnect();
