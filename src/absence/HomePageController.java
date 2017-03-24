@@ -104,7 +104,7 @@ public class HomePageController implements Initializable {
 
     @FXML
     private void onStructureAction(ActionEvent event) throws IOException, SQLException {
-        Parent home_page_parent = FXMLLoader.load(getClass().getResource("gestionStructure.fxml"));
+        Parent home_page_parent = FXMLLoader.load(getClass().getResource("Structure.fxml"));
         Scene home_page_scene = new Scene(home_page_parent);
         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
           

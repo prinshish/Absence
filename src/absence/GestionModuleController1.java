@@ -445,7 +445,7 @@ public class GestionModuleController1 implements Initializable {
          if(okbutton.getText()=="Edit"){
         daoM.updateMatiere(comboModule.getValue(),NomC.getText(),daoM.getIdProf(comboProf.getValue()),txtIDM.getText());
         // daoM.updateMatiere(comboModule.getValue(),NomC.getText(),daoM.getIdProf(comboProf.getValue()),9);
-       System.out.println("id mat"+Integer.parseInt(txtIDM.getText()));
+     //  System.out.println("id mat"+Integer.parseInt(txtIDM.getText()));
          }
          
         else {
