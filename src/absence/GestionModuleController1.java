@@ -146,7 +146,7 @@ public class GestionModuleController1 implements Initializable {
        colNomMod.setCellValueFactory(new PropertyValueFactory<Module,String> ("nom"));
        colClasseMod.setCellValueFactory(new PropertyValueFactory<Module,String> ("id_classe"));
        colNameM.setCellValueFactory(new PropertyValueFactory<Matiere,String> ("NomMatiere"));
-       colNomProf.setCellValueFactory(new PropertyValueFactory<Matiere,String> ("NomProf"));
+       colNomProf.setCellValueFactory(new PropertyValueFactory<Matiere,String> ("Nomprof"));
        colPreProf.setCellValueFactory(new PropertyValueFactory<Matiere,String> ("preProf"));
        colModule.setCellValueFactory(new PropertyValueFactory<Matiere,String> ("Module"));
        ColIdMatiere.setCellValueFactory(new PropertyValueFactory<Matiere,String> ("id_matiere"));
