@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<TitledPane collapsible="false" text="Ajout d'Utilisateurs" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="absence.AddUsersController">
+<TitledPane collapsible="false" text="Ajout d'Utilisateurs" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="absence.AddUsersController">
    <content>
       <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -46,6 +49,11 @@
             <Button fx:id="btnOk" layoutX="484.0" layoutY="126.0" mnemonicParsing="false" text="Ok" />
             <Button fx:id="btnUpload" layoutX="187.0" layoutY="20.0" mnemonicParsing="false" onAction="#onBtnOkUpload" text="Ok" />
             <Button fx:id="btnCancelUpload" cancelButton="true" layoutX="235.0" layoutY="20.0" mnemonicParsing="false" text="Cancel" visible="false" />
+            <Hyperlink fx:id="Accueil" layoutX="572.0" layoutY="3.0" onAction="#OnAccueil" text="Accueil">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Hyperlink>
          </children>
       </AnchorPane>
    </content>
