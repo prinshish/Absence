@@ -27,6 +27,10 @@ public class absence1 {
         this.Prenom = Prenom;
         this.Justificatif = Justificatif;
     }
+
+    public String getAbsence() {
+        return absence;
+    }
     
 
     public String getCNE() {

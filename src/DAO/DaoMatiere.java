@@ -186,14 +186,15 @@ public class DaoMatiere {
                   System.out.println(ex);}
               return id;
        }
-        public ResultSet PrintA(String mat){
+        public ResultSet PrintA(String mat ,String classe){
                 
         ResultSet Rs = null;
         
        
         try{
-              PreparedStatement St=MaConnexion.prepareStatement("Select student.cne, personne.nom, personne.prenom,s_absente.justificatif s_absente.absence  from personne join s_absente on personne.id_personne=s_absente.id_personne join student on student.id_personne=s_absente.id_personne where id_matiere=?");
+              PreparedStatement St=MaConnexion.prepareStatement("Select student.cne, personne.nom, personne.prenom,s_absente.justificatif , s_absente.absence  from personne join s_absente on personne.id_personne=s_absente.id_personne join student on student.id_personne=s_absente.id_personne where id_matiere=? and s_absente.id_classe=?");
               St.setString(1, mat);
+              St.setString(2, classe);
               Rs=St.executeQuery();
             
         }

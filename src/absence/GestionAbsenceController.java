@@ -144,7 +144,7 @@ public class GestionAbsenceController implements Initializable {
          table.getItems().clear();
         ResultSet Rs;
       
-        Rs = daoM.PrintA(matiereCombo.getValue()); 
+        Rs = daoM.PrintA(matiereCombo.getValue(),classeCombo.getValue()); 
         
          
          try {
