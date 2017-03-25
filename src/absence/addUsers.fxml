@@ -56,7 +56,7 @@
                   <Font size="18.0" />
                </font>
             </Hyperlink>
-            <Hyperlink layoutX="375.0" layoutY="50.0" text="Modules" textAlignment="CENTER">
+            <Hyperlink fx:id="linkModule" layoutX="375.0" layoutY="50.0" onAction="#onLinkModule" text="Modules" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>

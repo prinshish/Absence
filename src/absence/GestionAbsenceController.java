@@ -42,6 +42,7 @@ public class GestionAbsenceController implements Initializable {
     private ObservableList <String> comboString3 = FXCollections.observableArrayList();
     private ObservableList <String> comboString2 = FXCollections.observableArrayList();
     private ObservableList <Classe> Data_Box = FXCollections.observableArrayList();
+    private ObservableList <absence1> Data = FXCollections.observableArrayList();
     private ObservableList <Matiere> Data_Box1 = FXCollections.observableArrayList();
 
     private DaoMatiere daoM=new DaoMatiere();
@@ -86,7 +87,7 @@ public class GestionAbsenceController implements Initializable {
                
             
            Data_Box1.add(new Matiere(Rs.getString(1)));//(new User(rs.getString("username")).getUserName()
-           comboString3.add(Rs.getString(1));
+           comboString2.add(Rs.getString(1));
            
            matiereCombo.setItems(null);
            matiereCombo.setItems(comboString2);   
@@ -126,19 +127,24 @@ public class GestionAbsenceController implements Initializable {
                 app_stage.show();
     }
     public void actualiser(){
-//         table.getItems().clear();
-//        ResultSet Rs;
-//      
-//        Rs = daoM.PrintStudent(); //AP1 was just to test !!!!!!!!
-//        else
-//          Rs=dao.PrintStudent1(comboClasse.getValue());
-//         try {
-//         while ( Rs.next())
-//           {
-//           Data.add(new Student( Rs.getString(1),Rs.getString(2),Rs.getString(3),Rs.getString(4),Rs.getString(5))); //I didn't include id_filiere
-//           TableS.setItems(null);
-//           TableS.setItems(Data);   
-//           }
+         table.getItems().clear();
+        ResultSet Rs;
+      
+        Rs = daoM.PrintA(); //AP1 was just to test !!!!!!!!
+        
+         
+         try {
+         while ( Rs.next())
+           {
+           Data.add(new absence1( Rs.getString(1),Rs.getString(2),Rs.getString(3),Rs.getString(4))); //I didn't include id_filiere
+           table.setItems(null);
+           table.setItems(Data);   
+           }
+            
+         }
+      catch (SQLException ex) 
+        {  
+        System.err.println(ex); }
     }
 
     @Override
@@ -149,6 +155,9 @@ public class GestionAbsenceController implements Initializable {
        just.setCellValueFactory(new PropertyValueFactory<absence1,String> ("Justificatif"));
       abs.setCellValueFactory(new PropertyValueFactory<absence1,String> ("absence"));
         // TODO
+        fillComboClass();
+        fillComboM();
+        actualiser();
     }    
     
     private SimpleBooleanProperty checked = new SimpleBooleanProperty(false);

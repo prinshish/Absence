@@ -21,6 +21,14 @@ public class absence1 {
         this.absence = absence;
     }
 
+    public absence1(String CNE, String Nom, String Prenom, String Justificatif) {
+        this.CNE = CNE;
+        this.Nom = Nom;
+        this.Prenom = Prenom;
+        this.Justificatif = Justificatif;
+    }
+    
+
     public String getCNE() {
         return CNE;
     }

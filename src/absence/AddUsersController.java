@@ -103,6 +103,8 @@ public class AddUsersController implements Initializable {
     @FXML
     private TableView<Personne2> tableProfs;
     private ObservableList <Personne2> Data = FXCollections.observableArrayList();
+    @FXML
+    private Hyperlink linkModule;
     /**
      * Initializes the controller class.
      */
@@ -261,7 +263,7 @@ void clearFields(){
     } catch (FileNotFoundException ex) {
         ex.printStackTrace();
     }
-
+        actualiser();
     }
 
 
@@ -352,6 +354,17 @@ void clearFields(){
         }
         actualiser();
         clearFields();
+    }
+
+    @FXML
+    private void onLinkModule(ActionEvent event) throws IOException {
+        Parent home_page_parent = FXMLLoader.load(getClass().getResource("gestionModule_1.fxml"));
+        Scene home_page_scene = new Scene(home_page_parent);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+          
+                app_stage.hide(); //optional
+                app_stage.setScene(home_page_scene);
+                app_stage.show();
     }
     
     
