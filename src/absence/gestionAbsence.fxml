@@ -4,35 +4,40 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.collections.*?>
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="absence.GestionAbsenceController">
    <children>
-      <Button fx:id="valider" layoutX="642.0" layoutY="528.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="132.0" text="Valider" />
-      <TableView fx:id="table" editable="true" layoutX="44.0" layoutY="201.0" prefHeight="314.0" prefWidth="782.0">
+      <Button fx:id="valider" layoutX="686.0" layoutY="541.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="132.0" text="Valider" />
+      <TableView fx:id="table" editable="true" layoutX="34.0" layoutY="227.0" prefHeight="314.0" prefWidth="782.0">
         <columns>
-          <TableColumn prefWidth="138.0" text="CNE" />
-          <TableColumn prefWidth="152.0" text="Nom" />
-            <TableColumn prefWidth="160.0" text="Prenom" />
-            <TableColumn fx:id="checkBoxTableColumn" prefWidth="130.0" text="Absence" />
           <TableColumn fx:id="CNE" prefWidth="138.0" text="CNE" />
-          <TableColumn fx:id="colNom" prefWidth="152.0" text="Nom" />
-            <TableColumn fx:id="ColPrenom" prefWidth="160.0" text="Prenom" />
-            <TableColumn fx:id="abs" prefWidth="130.0" text="Absence" />
-            <TableColumn fx:id="just" prefWidth="193.0" text="justificatif" />
+          <TableColumn prefWidth="152.0" text="Nom" />
+            <TableColumn prefWidth="150.0" text="Prenom" />
+            <TableColumn fx:id="avant" prefWidth="107.0" text="Avant pause" />
+            <TableColumn fx:id="apres" prefWidth="91.0" text="Apres pause" />
+          <TableColumn fx:id="just" prefWidth="121.0" text="Justificatif" />
         </columns>
       </TableView>
-      <Label layoutX="77.0" layoutY="98.0" text="Matiere" />
-      <Label layoutX="81.0" layoutY="136.0" text="Classe" />
-      <ComboBox fx:id="matiereCombo" layoutX="174.0" layoutY="94.0" prefWidth="150.0" />
-      <ComboBox fx:id="classeCombo" layoutX="174.0" layoutY="132.0" prefHeight="25.0" prefWidth="150.0" />
+      <Label layoutX="61.0" layoutY="69.0" text="Matiere" />
+      <Label layoutX="65.0" layoutY="104.0" text="Classe" />
+      <ComboBox fx:id="matiereCombo" layoutX="137.0" layoutY="65.0" prefWidth="150.0" />
+      <ComboBox fx:id="classeCombo" layoutX="137.0" layoutY="99.0" prefHeight="25.0" prefWidth="150.0" />
       <Hyperlink fx:id="linkAccueil" layoutX="35.0" layoutY="34.0" onAction="#onAccueil" text="Accueil" />
-      <Label layoutX="431.0" layoutY="90.0" text="Periode" />
-      <ComboBox fx:id="periodCombo" layoutX="492.0" layoutY="86.0" prefWidth="150.0" >
-         
-      </ComboBox>
+      <Label layoutX="61.0" layoutY="137.0" text="Periode" />
+      <ComboBox fx:id="periodCombo" layoutX="137.0" layoutY="137.0" prefWidth="150.0" />
+      <Button layoutX="212.0" layoutY="189.0" mnemonicParsing="false" text="Selectionner" />
+      <Button layoutX="726.0" layoutY="189.0" mnemonicParsing="false" />
+      <TextField layoutX="603.0" layoutY="150.0" />
+      <TextField layoutX="602.0" layoutY="87.0" />
+      <Label layoutX="531.0" layoutY="104.0"  text="CNE" />
+      <Label layoutX="522.0" layoutY="167.0"  text="Justification" />
+      <RadioButton layoutX="602.0" layoutY="124.0" mnemonicParsing="false" text="Absent" />
+      <RadioButton layoutX="677.0" layoutY="124.0" mnemonicParsing="false" text="Present" />
    </children>
 </AnchorPane>
