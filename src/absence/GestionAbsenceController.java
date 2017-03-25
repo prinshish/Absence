@@ -84,6 +84,8 @@ public class GestionAbsenceController implements Initializable {
     private TextField txtJust;
     @FXML
     private TextField txtAbs;
+    @FXML
+    private Button Select;
     
 
 
@@ -140,13 +142,13 @@ public class GestionAbsenceController implements Initializable {
          table.getItems().clear();
         ResultSet Rs;
       
-        Rs = daoM.PrintA(matiereCombo.getValue()); //AP1 was just to test !!!!!!!!
+        Rs = daoM.PrintA(matiereCombo.getValue()); 
         
          
          try {
          while ( Rs.next())
            {
-           Data.add(new absence1( Rs.getString(1),Rs.getString(2),Rs.getString(3),Rs.getString(4))); //I didn't include id_filiere
+           Data.add(new absence1( Rs.getString(1),Rs.getString(2),Rs.getString(3),Rs.getString(4),Rs.getString(5))); //I didn't include id_filiere
            table.setItems(null);
            table.setItems(Data);   
            }
@@ -167,7 +169,7 @@ public class GestionAbsenceController implements Initializable {
         // TODO
         fillComboClass();
         fillComboM();
-        actualiser();
+       // actualiser();
     }    
     
     private SimpleBooleanProperty checked = new SimpleBooleanProperty(false);
@@ -183,6 +185,11 @@ public class GestionAbsenceController implements Initializable {
 
     public void setChecked(final java.lang.Boolean checked) {
         this.checkedProperty().set(checked);
+    }
+
+    @FXML
+    private void OnSelect(ActionEvent event) {
+        actualiser();
     }
 }
 

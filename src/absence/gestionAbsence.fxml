@@ -26,7 +26,7 @@
       <ComboBox fx:id="matiereCombo" layoutX="137.0" layoutY="65.0" prefWidth="150.0" />
       <ComboBox fx:id="classeCombo" layoutX="137.0" layoutY="99.0" prefHeight="25.0" prefWidth="150.0" />
       <Hyperlink fx:id="linkAccueil" layoutX="52.0" layoutY="30.0" onAction="#onAccueil" text="Accueil" />
-      <Button layoutX="202.0" layoutY="142.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Selectionner" />
+      <Button fx:id="Select" layoutX="202.0" layoutY="142.0" mnemonicParsing="false" onAction="#OnSelect" prefHeight="25.0" prefWidth="85.0" text="Selectionner" />
       <Button fx:id="done" layoutX="716.0" layoutY="171.0" mnemonicParsing="false" text="check" />
       <Label layoutX="535.0" layoutY="61.0" text="CNE" />
       <Label layoutX="527.0" layoutY="146.0" text="Justification" />
