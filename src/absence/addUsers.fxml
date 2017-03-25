@@ -3,57 +3,79 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TitledPane collapsible="false" text="Ajout d'Utilisateurs" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="absence.AddUsersController">
+<TitledPane collapsible="false" prefHeight="600.0" prefWidth="850.0" text="Ajout d'Utilisateurs" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="absence.AddUsersController">
    <content>
       <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <TableView layoutX="11.0" layoutY="160.0" prefHeight="226.0" prefWidth="578.0">
+            <TableView fx:id="tableProfs" layoutX="43.0" layoutY="308.0" onMouseClicked="#onClickTable" prefHeight="250.0" prefWidth="752.0">
               <columns>
                 <TableColumn fx:id="colID" prefWidth="75.0" text="ID" />
                   <TableColumn fx:id="colCIN" prefWidth="75.0" text="CIN" />
-                <TableColumn fx:id="colNom" prefWidth="75.0" text="Nom" />
-                  <TableColumn fx:id="colPrenom" prefWidth="75.0" text="Prénom" />
-                  <TableColumn fx:id="colLogin" prefWidth="75.0" text="Login" />
-                  <TableColumn fx:id="colMdp" prefWidth="79.0" text="Mdp" />
-                  <TableColumn fx:id="colEmail" prefWidth="123.0" text="Email" />
+                <TableColumn fx:id="colNom" prefWidth="140.0" text="Nom" />
+                  <TableColumn fx:id="colPrenom" prefWidth="142.0" text="Prénom" />
+                  <TableColumn fx:id="colLogin" prefWidth="90.0" text="Login" />
+                  <TableColumn fx:id="colMdp" prefWidth="83.0" text="Mdp" />
+                  <TableColumn fx:id="colEmail" prefWidth="145.0" text="Email" />
               </columns>
             </TableView>
-            <Button fx:id="btnUploadUsers" layoutX="47.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBtnUploadUsers" prefHeight="26.0" prefWidth="117.0" text="Upload Users">
+            <Button fx:id="btnUploadUsers" layoutX="84.0" layoutY="115.0" mnemonicParsing="false" onAction="#onBtnUploadUsers" prefHeight="37.0" prefWidth="120.0" text="Upload Users">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <TextField fx:id="txtCIN" layoutX="59.0" layoutY="91.0" prefHeight="25.0" prefWidth="112.0" />
-            <Label layoutX="24.0" layoutY="95.0" text="CIN" />
-            <Label layoutX="24.0" layoutY="130.0" text="Email" />
-            <TextField fx:id="txtEmail" layoutX="59.0" layoutY="126.0" prefHeight="25.0" prefWidth="185.0" />
-            <Label layoutX="193.0" layoutY="95.0" text="Prénom" />
-            <TextField fx:id="txtPrenom" layoutX="242.0" layoutY="91.0" prefHeight="25.0" prefWidth="112.0" />
-            <Label layoutX="201.0" layoutY="61.0" text="Nom" />
-            <TextField fx:id="txtNom" layoutX="242.0" layoutY="57.0" prefHeight="25.0" prefWidth="112.0" />
-            <TextField fx:id="txtMdp" layoutX="417.0" layoutY="91.0" prefHeight="25.0" prefWidth="112.0" />
-            <Label layoutX="379.0" layoutY="95.0" text="Mdp" />
-            <TextField fx:id="txtLogin" layoutX="417.0" layoutY="57.0" prefHeight="25.0" prefWidth="112.0" />
-            <Label layoutX="376.0" layoutY="61.0" text="Login" />
-            <Label layoutX="24.0" layoutY="61.0" text="ID" />
-            <TextField fx:id="txtID" layoutX="59.0" layoutY="57.0" prefHeight="25.0" prefWidth="112.0" />
-            <Button fx:id="btnCancel" cancelButton="true" layoutX="339.0" layoutY="126.0" mnemonicParsing="false" text="Cancel" visible="false" />
-            <Button fx:id="btnDelete" layoutX="411.0" layoutY="126.0" mnemonicParsing="false" text="Delete" visible="false" />
-            <Button fx:id="btnOk" layoutX="484.0" layoutY="126.0" mnemonicParsing="false" text="Ok" />
-            <Button fx:id="btnUpload" layoutX="187.0" layoutY="20.0" mnemonicParsing="false" onAction="#onBtnOkUpload" text="Ok" />
-            <Button fx:id="btnCancelUpload" cancelButton="true" layoutX="235.0" layoutY="20.0" mnemonicParsing="false" text="Cancel" visible="false" />
-            <Hyperlink fx:id="Accueil" layoutX="572.0" layoutY="3.0" onAction="#OnAccueil" text="Accueil">
+            <TextField fx:id="txtCIN" layoutX="119.0" layoutY="212.0" prefHeight="25.0" prefWidth="112.0" />
+            <Label layoutX="84.0" layoutY="216.0" text="CIN" />
+            <Label layoutX="84.0" layoutY="251.0" text="Email" />
+            <TextField fx:id="txtEmail" layoutX="119.0" layoutY="247.0" prefHeight="25.0" prefWidth="185.0" />
+            <Label layoutX="305.0" layoutY="208.0" text="Prénom" />
+            <TextField fx:id="txtPrenom" layoutX="354.0" layoutY="204.0" prefHeight="25.0" prefWidth="133.0" />
+            <Label layoutX="313.0" layoutY="174.0" text="Nom" />
+            <TextField fx:id="txtNom" layoutX="354.0" layoutY="170.0" prefHeight="25.0" prefWidth="133.0" />
+            <TextField fx:id="txtMdp" layoutX="618.0" layoutY="204.0" prefHeight="25.0" prefWidth="139.0" />
+            <Label layoutX="580.0" layoutY="208.0" text="Mdp" />
+            <TextField fx:id="txtLogin" layoutX="618.0" layoutY="170.0" prefHeight="25.0" prefWidth="137.0" />
+            <Label layoutX="577.0" layoutY="174.0" text="Login" />
+            <Label layoutX="84.0" layoutY="182.0" text="ID" />
+            <TextField fx:id="txtID" layoutX="119.0" layoutY="178.0" prefHeight="25.0" prefWidth="112.0" />
+            <Button fx:id="btnCancel" cancelButton="true" layoutX="452.0" layoutY="247.0" mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
+            <Button fx:id="btnDelete" layoutX="385.0" layoutY="247.0" mnemonicParsing="false" onAction="#onDelete" text="Delete" />
+            <Button fx:id="btnOk" layoutX="331.0" layoutY="247.0" mnemonicParsing="false" onAction="#onOk" text="Ok" />
+            <Button fx:id="btnUpload" layoutX="221.0" layoutY="121.0" mnemonicParsing="false" onAction="#onBtnOkUpload" text="Ok" />
+            <Button fx:id="btnCancelUpload" cancelButton="true" layoutX="267.0" layoutY="121.0" mnemonicParsing="false" onAction="#onBtnCancelUpload" text="Cancel" />
+            <Hyperlink fx:id="linkAccueil" layoutX="253.0" layoutY="50.0" onAction="#onAccueil" text="Accueil">
                <font>
                   <Font size="18.0" />
                </font>
             </Hyperlink>
+            <Hyperlink layoutX="375.0" layoutY="50.0" text="Modules" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink fx:id="linkStructures" layoutX="514.0" layoutY="50.0" onAction="#onStructures" text="Structures">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Hyperlink>
+            <Separator layoutX="478.0" layoutY="56.0" orientation="VERTICAL" prefHeight="23.0" prefWidth="5.0">
+               <effect>
+                  <ColorAdjust brightness="-0.42" contrast="-0.23" hue="-0.53" saturation="-0.93" />
+               </effect>
+            </Separator>
+            <Separator layoutX="354.0" layoutY="56.0" orientation="VERTICAL" prefHeight="23.0" prefWidth="5.0">
+               <effect>
+                  <ColorAdjust brightness="-0.42" contrast="-0.23" hue="-0.53" saturation="-0.93" />
+               </effect>
+            </Separator>
          </children>
       </AnchorPane>
    </content>

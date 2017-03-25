@@ -5,32 +5,53 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="absence.HomePageController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="absence.HomePageController">
    <children>
-      <Hyperlink fx:id="linkAccueil" layoutX="158.0" layoutY="53.0" onAction="#onAcceuilAction" text="Accueil" textAlignment="CENTER" />
-      <Hyperlink fx:id="linkUser" layoutX="227.0" layoutY="53.0" onAction="#onUserAction" text="Utilisateurs" textAlignment="CENTER" />
-      <Hyperlink fx:id="linkModule" layoutX="315.0" layoutY="53.0" onAction="#onlinkModuleAction" text="Modules" textAlignment="CENTER" />
-      <Hyperlink fx:id="linkStructure" layoutX="400.0" layoutY="53.0" onAction="#onlinkStructureAction" text="Structures" textAlignment="CENTER" />
-      <Separator layoutX="217.0" layoutY="49.0" orientation="VERTICAL" prefHeight="31.0" prefWidth="3.0">
+      <Hyperlink fx:id="linkAccueil" layoutX="201.0" layoutY="55.0" onAction="#onAcceuilAction" text="Accueil" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font></Hyperlink>
+      <Hyperlink fx:id="linkUser" layoutX="305.0" layoutY="55.0" onAction="#onUserAction" text="Utilisateurs" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font></Hyperlink>
+      <Hyperlink fx:id="linkModule" layoutX="436.0" layoutY="55.0" onAction="#onlinkModuleAction" text="Modules" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font></Hyperlink>
+      <Hyperlink fx:id="linkStructure" layoutX="557.0" layoutY="55.0" onAction="#onlinkStructureAction" text="Structures" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font></Hyperlink>
+      <Separator layoutX="289.0" layoutY="57.0" orientation="VERTICAL" prefHeight="31.0" prefWidth="3.0">
          <effect>
             <ColorAdjust brightness="-0.42" contrast="-0.23" hue="-0.53" saturation="-0.93" />
          </effect>
       </Separator>
-      <Separator layoutX="384.0" layoutY="49.0" orientation="VERTICAL" prefHeight="31.0" prefWidth="3.0">
+      <Separator layoutX="537.0" layoutY="57.0" orientation="VERTICAL" prefHeight="31.0" prefWidth="3.0">
          <effect>
             <ColorAdjust brightness="-0.42" contrast="-0.23" hue="-0.53" saturation="-0.93" />
          </effect>
       </Separator>
-      <Separator layoutX="299.0" layoutY="49.0" orientation="VERTICAL" prefHeight="31.0" prefWidth="3.0">
+      <Separator layoutX="417.0" layoutY="57.0" orientation="VERTICAL" prefHeight="31.0" prefWidth="3.0">
          <effect>
             <ColorAdjust brightness="-0.42" contrast="-0.23" hue="-0.53" saturation="-0.93" />
          </effect>
       </Separator>
-      <Button fx:id="btnAdd" layoutX="237.0" layoutY="160.0" mnemonicParsing="false" onAction="#onAddAction" prefHeight="25.0" prefWidth="136.0" text="Ajouter Utilisateur" textAlignment="CENTER" />
-      <Button fx:id="btnModule" layoutX="237.0" layoutY="225.0" mnemonicParsing="false" onAction="#onModuleAction" prefHeight="25.0" prefWidth="136.0" text="Gestion de Modules" textAlignment="CENTER" textFill="#1e1e1e" />
-      <Button fx:id="btnStructure" layoutX="238.0" layoutY="295.0" mnemonicParsing="false" onAction="#onStructureAction" prefHeight="25.0" prefWidth="136.0" text="Gestion de Structures" textAlignment="CENTER" textFill="#0d0000" />
-      <Button fx:id="Iddeco" layoutX="527.0" layoutY="2.0" mnemonicParsing="false" onAction="#onDeco" text="Déconnexion" />
-      <Button fx:id="btnAbsence" layoutX="237.0" layoutY="341.0" mnemonicParsing="false" onAction="#absence" prefHeight="25.0" prefWidth="136.0" text="Gestion d'absence" textAlignment="CENTER" textFill="#0d0000" />
+      <Button fx:id="btnAdd" layoutX="296.0" layoutY="191.0" mnemonicParsing="false" onAction="#onAddAction" prefHeight="44.0" prefWidth="218.0" text="Ajouter Utilisateur" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button fx:id="btnModule" layoutX="296.0" layoutY="279.0" mnemonicParsing="false" onAction="#onModuleAction" prefHeight="44.0" prefWidth="218.0" text="Gestion de Modules" textAlignment="CENTER" textFill="#1e1e1e">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button fx:id="btnStructure" layoutX="296.0" layoutY="365.0" mnemonicParsing="false" onAction="#onStructureAction" prefHeight="44.0" prefWidth="218.0" text="Gestion de Structures" textAlignment="CENTER" textFill="#0d0000">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button fx:id="Iddeco" layoutX="764.0" mnemonicParsing="false" onAction="#onDeco" text="Déconnexion" />
    </children>
 </AnchorPane>

@@ -16,7 +16,7 @@ public class DaoProduit {
     public DaoProduit(){
         dao=new DAO();
         dao.setPilote("com.mysql.jdbc.Driver");
-        dao.setURL("jdbc:mysql://localhost/absence");
+        dao.setURL("jdbc:mysql://localhost:3306/absence");
         dao.setLogin("root");
         dao.setPasswd("");
         dao.ToConnect();
@@ -41,26 +41,6 @@ public class DaoProduit {
         return false;
     }
     
-    public int selectNbStudents(String id) throws SQLException{
-     
-     ResultSet res=null;
-     int count=0;
-       try 
-        {
-            Statement St = MaConnexion.createStatement();
-            PreparedStatement pst = MaConnexion.prepareStatement("SELECT COUNT(*) FROM student where id_classe= ?  ");
-            pst.setString(1,id);
-            res=pst.executeQuery();
-                while (res.next()){
-                    count = res.getInt(1);
-                }
-        } 
-        catch (SQLException ex) 
-        {  
-        System.err.println("Erreur dans la requete select count Students !!!"); 
-        }
-       return count;
- }
     public void addFiliere(String id, String nom){
         Statement St;
         try{
@@ -71,19 +51,6 @@ public class DaoProduit {
         }
         catch(SQLException ex){
             System.err.println("erreur d'ajout filière "+ex.getMessage());
-        }
-    }
-    
-    public void updateEffectif(String id, int eff){
-        Statement St;
-        try{
-            PreparedStatement pst = MaConnexion.prepareStatement(" update classe set effectif=? where id_classe=? ");
-            pst.setInt(1,eff);
-            pst.setString(2,id);
-            pst.executeUpdate();
-        }
-        catch(SQLException ex){
-            System.err.println("erreur update Effectif "+ex.getMessage());
         }
     }
     
@@ -101,26 +68,7 @@ public class DaoProduit {
             pst.executeUpdate();
         }
         catch(SQLException ex){
-            System.err.println("erreur d'ajout "+type+" "+ex.getMessage());
-        }
-    }
-    
-    
-    public void editPersonne(String id, String nom, String prenom, String CIN, String login, String mdp, String type){
-        Statement St;
-        try{
-            PreparedStatement pst = MaConnexion.prepareStatement("update personne set nom=?,prenom=?,CIN=?,login=?,mdp=?,type=? where id_personne=?");
-            pst.setString(7,id);
-            pst.setString(1,nom);
-            pst.setString(2,prenom);
-            pst.setString(3,CIN);
-            pst.setString(4,login);
-            pst.setString(5,mdp);
-            pst.setString(6,type);
-            pst.executeUpdate();
-        }
-        catch(SQLException ex){
-            System.err.println("erreur d'ajout "+type+" "+ex.getMessage());
+            System.err.println("erreur d'ajout prof "+ex.getMessage());
         }
     }
     
@@ -307,18 +255,6 @@ public class DaoProduit {
         }
     }
     
-    public void deleteProf(String id){
-        try{
-            PreparedStatement pst = MaConnexion.prepareStatement("delete from personne where id_personne=? ");
-            pst.setString(1,id);
-            pst.executeUpdate();
-            System.out.println("Prof successfuly deleted\n");
-        }
-        catch(SQLException ex){
-            System.err.println("Erreur dans la requete delete prof");
-        }
-    }
-    
     public ResultSet printClasse(){
         Statement St;
         ResultSet Rs = null;
@@ -328,19 +264,6 @@ public class DaoProduit {
         }
         catch(SQLException ex){
             System.err.println("Pb dans la requete Select classe."+ex.getMessage());
-        }
-        return Rs;
-    }
-    
-    public ResultSet printProfs(){
-        Statement St;
-        ResultSet Rs = null;
-        try{
-            St=MaConnexion.createStatement();
-            Rs=St.executeQuery("Select * from personne where type='prof'");
-        }
-        catch(SQLException ex){
-            System.err.println("Pb dans la requete Select Profs."+ex.getMessage());
         }
         return Rs;
     }

@@ -128,10 +128,6 @@ public class GestionModuleController1 implements Initializable {
     private ComboBox<String> comboProf;
     @FXML
     private TextField txtIDM;
-    @FXML
-    private TableColumn<Matiere, String> ColIdMatiere;
-    @FXML
-    private Hyperlink linkStructures;
 
     
     
@@ -148,10 +144,9 @@ public class GestionModuleController1 implements Initializable {
        colNomMod.setCellValueFactory(new PropertyValueFactory<Module,String> ("nom"));
        colClasseMod.setCellValueFactory(new PropertyValueFactory<Module,String> ("id_classe"));
        colNameM.setCellValueFactory(new PropertyValueFactory<Matiere,String> ("NomMatiere"));
-       colNomProf.setCellValueFactory(new PropertyValueFactory<Matiere,String> ("Nomprof"));
+       colNomProf.setCellValueFactory(new PropertyValueFactory<Matiere,String> ("NomProf"));
        colPreProf.setCellValueFactory(new PropertyValueFactory<Matiere,String> ("preProf"));
        colModule.setCellValueFactory(new PropertyValueFactory<Matiere,String> ("Module"));
-       ColIdMatiere.setCellValueFactory(new PropertyValueFactory<Matiere,String> ("id_matiere"));
        actualiser_Mod();
 //       actualiser_C();
        show_in_textfiled_Mod(); 
@@ -421,7 +416,6 @@ public class GestionModuleController1 implements Initializable {
          btnDelete.setVisible(true);
         btnCancelM.setVisible(true);
         okbutton.setText("Edit");
-        txtIDM.setDisable(true);
     }
 
     @FXML
@@ -429,7 +423,7 @@ public class GestionModuleController1 implements Initializable {
            btnDelete.setVisible(false);
         btnCancelM.setVisible(false);
         okbutton.setText("Ok");
-       txtIDM.setDisable(false);
+       // txtModule.setDisable(false);
         fillComboMo();
         fillComboP();
         clear_Mat();
@@ -437,33 +431,31 @@ public class GestionModuleController1 implements Initializable {
 
     @FXML
     private void onDeleteMat(ActionEvent event) {
-         daoM.deleteMatiere(txtIDM.getText());
-       // daoM.deleteMatiere(11);
+         //daoM.deleteMatiere(Integer.parseInt(txtIDM.getText()));
+         daoM.deleteMatiere(11);
          actualiser_Mat();
     }
 
     @FXML
     private void onOkMatiere(ActionEvent event) {
-         if(okbutton.getText()=="Edit"){
-        daoM.updateMatiere(comboModule.getValue(),NomC.getText(),daoM.getIdProf(comboProf.getValue()),txtIDM.getText());
-        // daoM.updateMatiere(comboModule.getValue(),NomC.getText(),daoM.getIdProf(comboProf.getValue()),9);
-     //  System.out.println("id mat"+Integer.parseInt(txtIDM.getText()));
+         if(btnOkMod.getText()=="Edit"){
+        //daoM.updateMatiere(comboModule.getValue(),NomC.getText(),daoM.getIdProf(comboProf.getValue()),Integer.parseInt(txtIDM.getText()) );
+         daoM.updateMatiere(comboModule.getValue(),NomC.getText(),daoM.getIdProf(comboProf.getValue()),9);
+       System.out.println("id mat"+Integer.parseInt(txtIDM.getText()));
          }
          
         else {
-        daoM.addMatiere(txtIDM.getText(), NomC.getText(),comboModule.getValue(), daoM.getIdProf(comboProf.getValue()));
+        daoM.addMatiere(NomC.getText(),comboModule.getValue(), daoM.getIdProf(comboProf.getValue()));
         }
         actualiser_Mat();
     }
     private void actualiser_Mat(){
  TableM.getItems().clear();
         ResultSet Rs = daoM.PrintM();
-        System.out.println("Try");
          try {
          while ( Rs.next())
            {
-               System.out.println("keep Trying");
-           Data_Mat.add(new Matiere(Rs.getString(1),Rs.getString(3),Rs.getString(4),Rs.getString(5),Rs.getString(2)));
+           Data_Mat.add(new Matiere(Rs.getString(1),Rs.getString(2),Rs.getString(4),Rs.getString(3)));
            TableM.setItems(null);
            TableM.setItems(Data_Mat);   
            }
@@ -527,7 +519,7 @@ public class GestionModuleController1 implements Initializable {
         if(TableM.getSelectionModel().getSelectedItem() != null) 
         {
        
-        txtIDM.setText(newValue.getId_matiere());
+        txtIDM.setText(String.valueOf((newValue.getId_matiere())));
         NomC.setText(newValue.getNomMatiere());
         comboProf.setValue(newValue.getNomprof());
         comboModule.setValue(newValue.getModule());
@@ -536,17 +528,6 @@ public class GestionModuleController1 implements Initializable {
 
      });
          
-    }
-
-    @FXML
-    private void onStructures(ActionEvent event) throws IOException {
-        Parent home_page_parent = FXMLLoader.load(getClass().getResource("Structure.fxml"));
-        Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-                app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();
     }
  
 

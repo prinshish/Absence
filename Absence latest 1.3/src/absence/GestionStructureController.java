@@ -415,7 +415,7 @@ public class GestionStructureController implements Initializable {
     }
 
     @FXML
-    private void onBtnOkUpload(ActionEvent event) throws IOException, SQLException {
+    private void onBtnOkUpload(ActionEvent event) throws IOException {
         String fil = comboFiliere.getValue();
         String classe= NomC.getText();
         try { 
@@ -436,26 +436,21 @@ public class GestionStructureController implements Initializable {
                     if (i==4) {
                         cne = result;
                         dao.addStudent(id, nom, prenom, cin, id, cin, "student", fil, classe, cne);
-                        
-                        
                         //System.out.println("id: "+id+" nom: "+nom+" prenom: "+prenom+" cin: "+cin);
                         i=-1;
                     }
                     i++;
                 }
-                
             }
             if (bReader == null)
             {
                 bReader.close();
             }
-           
         }
     } catch (FileNotFoundException ex) {
         ex.printStackTrace();
     }
-        dao.updateEffectif(classe,dao.selectNbStudents(classe));
-        actualiser_C();
+
     }
 
     @FXML
