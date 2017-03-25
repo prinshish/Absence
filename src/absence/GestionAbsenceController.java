@@ -28,7 +28,6 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 /**
@@ -79,6 +78,9 @@ public class GestionAbsenceController implements Initializable {
     @FXML
     private Button done;
     @FXML
+    private TextField justT;
+    @FXML
+    private TextField cneT;
     private TextField txtCNE;
     @FXML
     private TextField txtJust;
@@ -166,6 +168,7 @@ public class GestionAbsenceController implements Initializable {
        CNE.setCellValueFactory(new PropertyValueFactory<absence1,String> ("CNE"));
        just.setCellValueFactory(new PropertyValueFactory<absence1,String> ("Justificatif"));
       abs.setCellValueFactory(new PropertyValueFactory<absence1,String> ("absence"));
+      
         // TODO
         fillComboClass();
         fillComboM();
