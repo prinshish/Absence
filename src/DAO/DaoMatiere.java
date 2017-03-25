@@ -186,6 +186,23 @@ public class DaoMatiere {
                   System.out.println(ex);}
               return id;
        }
+        public ResultSet PrintA(){
+                
+        ResultSet Rs = null;
+        
+       
+        try{
+              PreparedStatement St=MaConnexion.prepareStatement("Select matiere.id_matiere , matiere.nom,module.id_module,personne.nom,personne.prenom from matiere join module on matiere.id_module=module.id_module join personne on matiere.id_personne=personne.id_personne where personne.type='prof'");
+            
+              Rs=St.executeQuery();
+            
+        }
+        catch(SQLException ex){
+            System.err.println("Pb dans la requete Select matiere."+ex.getMessage());
+        }
+        
+        return Rs;
+       }
        
 }
 
