@@ -192,8 +192,7 @@ public class DaoMatiere {
         
        
         try{
-              PreparedStatement St=MaConnexion.prepareStatement("Select student.cne, personne.nom, personne.prenom,s_absente.justificatif  from personne join module on matiere.id_module=module.id_module join personne on matiere.id_personne=personne.id_personne where personne.type='prof'");
-            
+              PreparedStatement St=MaConnexion.prepareStatement("Select student.cne, personne.nom, personne.prenom,s_absente.justificatif  from personne join s_absente on personne.id_personne=personne.id_personne join student on student.id_personne=s_absente.id_personne ;");
               Rs=St.executeQuery();
             
         }
