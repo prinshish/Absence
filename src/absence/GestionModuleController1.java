@@ -130,6 +130,8 @@ public class GestionModuleController1 implements Initializable {
     private TextField txtIDM;
     @FXML
     private TableColumn<Matiere, String> ColIdMatiere;
+    @FXML
+    private Hyperlink linkStructures;
 
     
     
@@ -534,6 +536,17 @@ public class GestionModuleController1 implements Initializable {
 
      });
          
+    }
+
+    @FXML
+    private void onStructures(ActionEvent event) throws IOException {
+        Parent home_page_parent = FXMLLoader.load(getClass().getResource("Structure.fxml"));
+        Scene home_page_scene = new Scene(home_page_parent);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+          
+                app_stage.hide(); //optional
+                app_stage.setScene(home_page_scene);
+                app_stage.show();
     }
  
 

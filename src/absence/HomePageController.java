@@ -77,7 +77,14 @@ public class HomePageController implements Initializable {
     }
 
     @FXML
-    private void onlinkStructureAction(ActionEvent event) {
+    private void onlinkStructureAction(ActionEvent event) throws IOException {
+        Parent home_page_parent = FXMLLoader.load(getClass().getResource("Structure.fxml"));
+        Scene home_page_scene = new Scene(home_page_parent);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+          
+                app_stage.hide(); //optional
+                app_stage.setScene(home_page_scene);
+                app_stage.show();
     }
 
     @FXML
@@ -104,7 +111,7 @@ public class HomePageController implements Initializable {
 
     @FXML
     private void onStructureAction(ActionEvent event) throws IOException, SQLException {
-        Parent home_page_parent = FXMLLoader.load(getClass().getResource("Structure.fxml"));
+        Parent home_page_parent = FXMLLoader.load(getClass().getResource("gestionStructure.fxml"));
         Scene home_page_scene = new Scene(home_page_parent);
         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
           

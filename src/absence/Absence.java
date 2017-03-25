@@ -19,7 +19,7 @@ public class Absence extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Structure.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
