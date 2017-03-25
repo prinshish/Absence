@@ -14,10 +14,16 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,7 +34,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
@@ -43,19 +51,19 @@ import javafx.stage.Stage;
 public class AddUsersController implements Initializable {
 
     @FXML
-    private TableColumn<Personne, String> colID;
+    private TableColumn<Personne2, Integer> colID;
     @FXML
-    private TableColumn<Personne, String> colCIN;
+    private TableColumn<Personne2, String> colCIN;
     @FXML
-    private TableColumn<Personne, String> colNom;
+    private TableColumn<Personne2, String> colNom;
     @FXML
-    private TableColumn<Personne, String> colPrenom;
+    private TableColumn<Personne2, String> colPrenom;
     @FXML
-    private TableColumn<Personne, String> colLogin;
+    private TableColumn<Personne2, String> colLogin;
     @FXML
-    private TableColumn<Personne, String> colMdp;
+    private TableColumn<Personne2, String> colMdp;
     @FXML
-    private TableColumn<Personne, String> colEmail;
+    private TableColumn<Personne2, String> colEmail;
     @FXML
     private Button btnUploadUsers;
     @FXML
@@ -92,14 +100,72 @@ public class AddUsersController implements Initializable {
     private Hyperlink linkAccueil;
     @FXML
     private Hyperlink linkStructures;
+    @FXML
+    private TableView<Personne2> tableProfs;
+    private ObservableList <Personne2> Data = FXCollections.observableArrayList();
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         dao = new DaoProduit();
+        colCIN.setCellValueFactory(new PropertyValueFactory<Personne2,String> ("CIN"));
+        colEmail.setCellValueFactory(new PropertyValueFactory<Personne2,String> ("email"));
+        colID.setCellValueFactory(new PropertyValueFactory<Personne2,Integer> ("id_personne"));
+        colLogin.setCellValueFactory(new PropertyValueFactory<Personne2,String> ("login"));
+        colMdp.setCellValueFactory(new PropertyValueFactory<Personne2,String> ("mdp"));
+        colNom.setCellValueFactory(new PropertyValueFactory<Personne2,String> ("nom"));
+        colPrenom.setCellValueFactory(new PropertyValueFactory<Personne2,String> ("prenom"));
+        btnDelete.setVisible(false);
+        btnCancel.setVisible(false);
+        btnCancelUpload.setVisible(false);
+        btnUpload.setVisible(false);
+        show_in_textfield();
+        actualiser();
         // TODO
-    }    
+    }
+    
+    private void cancelUpload(){
+        btnUpload.setVisible(false);
+        btnCancelUpload.setVisible(false);
+    }
+    
+    private void cancelEntry(){
+         btnDelete.setVisible(false);
+        btnCancel.setVisible(false);
+        btnOk.setText("Ok");
+        txtID.setDisable(false);
+        
+    }
+
+private void actualiser(){
+        tableProfs.getItems().clear();
+        ResultSet Rs = dao.printProfs();
+         try {
+         while ( Rs.next())
+           {/////////////////////////ID///////////NOM////////////////PRENOM////////CIN//////////////email///////////login//////////////mdp/////
+           Data.add(new Personne2( Rs.getInt(1),Rs.getString(2),Rs.getString(3),Rs.getString(4),Rs.getString(5),Rs.getString(7),Rs.getString(8))); 
+           tableProfs.setItems(null);
+           tableProfs.setItems(Data);   
+           }
+         cancelEntry();
+         cancelUpload();
+         
+         }
+      catch (SQLException ex) 
+        {  
+        System.err.println(ex); }
+    };   
+
+void clearFields(){
+    txtCIN.clear();
+         txtEmail.clear();
+         txtID.clear();
+         txtLogin.clear();
+         txtMdp.clear();
+         txtNom.clear();
+         txtPrenom.clear();
+}
     
     void load_data() throws FileNotFoundException
    {
@@ -159,6 +225,7 @@ public class AddUsersController implements Initializable {
          fileInput = new FileInputStream (file);
        }
             btnCancelUpload.setVisible(true);
+            btnUpload.setVisible(true);
     }
 
     @FXML
@@ -219,5 +286,74 @@ public class AddUsersController implements Initializable {
                 app_stage.setScene(home_page_scene);
                 app_stage.show();
     }
+
+    private void  show_in_textfield()
+    { 
+       
+       tableProfs.getSelectionModel().selectedItemProperty().addListener(new ChangeListener <Personne2> () {
+       @Override
+    
+    public void changed(ObservableValue<? extends Personne2> observableValue, Personne2 oldValue, Personne2 newValue) {
+        //Check whether item is selected and set value of selected item to Label
+        if(tableProfs.getSelectionModel().getSelectedItem() != null) 
+        {
+       
+        txtCIN.setText(newValue.getCIN());
+        txtEmail.setText(newValue.getEmail());
+        txtID.setText(Integer.toString(newValue.getId_personne()));
+        txtLogin.setText(newValue.getLogin());
+        txtMdp.setText(newValue.getMdp());
+        txtNom.setText(newValue.getNom());
+        txtPrenom.setText(newValue.getPrenom());
+       
+       // film.setText(String.valueOf(newValue.getId_film()));
+       
+        }
+    }
+
+     });
+         
+    }
+    
+    @FXML
+    private void onBtnCancelUpload(ActionEvent event) {
+        cancelUpload();
+    }
+
+    @FXML
+    private void onClickTable(MouseEvent event) {
+         btnDelete.setVisible(true);
+        btnCancel.setVisible(true);
+        btnOk.setText("Edit");
+        txtID.setDisable(true);
+    }
+
+    @FXML
+    private void onCancel(ActionEvent event) {
+        clearFields();
+        txtID.setDisable(false);
+        cancelEntry();
+    }
+
+    @FXML
+    private void onDelete(ActionEvent event) {
+        dao.deleteProf(txtID.getText());
+         actualiser();
+         clearFields();
+    }
+
+    @FXML
+    private void onOk(ActionEvent event) {
+        if(btnOk.getText()=="Edit"){
+        dao.editPersonne( txtID.getText(),txtNom.getText(), txtPrenom.getText(), txtCIN.getText(), txtLogin.getText(), txtMdp.getText(), "prof");
+        }
+        else {
+        dao.addPersonne( txtID.getText(),txtNom.getText(), txtPrenom.getText(), txtCIN.getText(), txtLogin.getText(), txtMdp.getText(), "prof");
+        }
+        actualiser();
+        clearFields();
+    }
+    
+    
     
 }

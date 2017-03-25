@@ -105,6 +105,25 @@ public class DaoProduit {
         }
     }
     
+    
+    public void editPersonne(String id, String nom, String prenom, String CIN, String login, String mdp, String type){
+        Statement St;
+        try{
+            PreparedStatement pst = MaConnexion.prepareStatement("update personne set nom=?,prenom=?,CIN=?,login=?,mdp=?,type=? where id_personne=?");
+            pst.setString(7,id);
+            pst.setString(1,nom);
+            pst.setString(2,prenom);
+            pst.setString(3,CIN);
+            pst.setString(4,login);
+            pst.setString(5,mdp);
+            pst.setString(6,type);
+            pst.executeUpdate();
+        }
+        catch(SQLException ex){
+            System.err.println("erreur d'ajout "+type+" "+ex.getMessage());
+        }
+    }
+    
     public void addStudent(String id, String nom, String prenom, String CIN, String login, String mdp, String type, String Filiere, String classe, String CNE){
         Statement St;
         try{
@@ -288,6 +307,18 @@ public class DaoProduit {
         }
     }
     
+    public void deleteProf(String id){
+        try{
+            PreparedStatement pst = MaConnexion.prepareStatement("delete from personne where id_personne=? ");
+            pst.setString(1,id);
+            pst.executeUpdate();
+            System.out.println("Prof successfuly deleted\n");
+        }
+        catch(SQLException ex){
+            System.err.println("Erreur dans la requete delete prof");
+        }
+    }
+    
     public ResultSet printClasse(){
         Statement St;
         ResultSet Rs = null;
@@ -297,6 +328,19 @@ public class DaoProduit {
         }
         catch(SQLException ex){
             System.err.println("Pb dans la requete Select classe."+ex.getMessage());
+        }
+        return Rs;
+    }
+    
+    public ResultSet printProfs(){
+        Statement St;
+        ResultSet Rs = null;
+        try{
+            St=MaConnexion.createStatement();
+            Rs=St.executeQuery("Select * from personne where type='prof'");
+        }
+        catch(SQLException ex){
+            System.err.println("Pb dans la requete Select Profs."+ex.getMessage());
         }
         return Rs;
     }

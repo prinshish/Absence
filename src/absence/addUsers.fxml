@@ -16,7 +16,7 @@
    <content>
       <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <TableView layoutX="43.0" layoutY="308.0" prefHeight="250.0" prefWidth="752.0">
+            <TableView fx:id="tableProfs" layoutX="43.0" layoutY="308.0" onMouseClicked="#onClickTable" prefHeight="250.0" prefWidth="752.0">
               <columns>
                 <TableColumn fx:id="colID" prefWidth="75.0" text="ID" />
                   <TableColumn fx:id="colCIN" prefWidth="75.0" text="CIN" />
@@ -46,11 +46,11 @@
             <Label layoutX="577.0" layoutY="174.0" text="Login" />
             <Label layoutX="84.0" layoutY="182.0" text="ID" />
             <TextField fx:id="txtID" layoutX="119.0" layoutY="178.0" prefHeight="25.0" prefWidth="112.0" />
-            <Button fx:id="btnCancel" cancelButton="true" layoutX="452.0" layoutY="247.0" mnemonicParsing="false" text="Cancel" />
-            <Button fx:id="btnDelete" layoutX="385.0" layoutY="247.0" mnemonicParsing="false" text="Delete" />
-            <Button fx:id="btnOk" layoutX="331.0" layoutY="247.0" mnemonicParsing="false" text="Ok" />
+            <Button fx:id="btnCancel" cancelButton="true" layoutX="452.0" layoutY="247.0" mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
+            <Button fx:id="btnDelete" layoutX="385.0" layoutY="247.0" mnemonicParsing="false" onAction="#onDelete" text="Delete" />
+            <Button fx:id="btnOk" layoutX="331.0" layoutY="247.0" mnemonicParsing="false" onAction="#onOk" text="Ok" />
             <Button fx:id="btnUpload" layoutX="221.0" layoutY="121.0" mnemonicParsing="false" onAction="#onBtnOkUpload" text="Ok" />
-            <Button fx:id="btnCancelUpload" cancelButton="true" layoutX="267.0" layoutY="121.0" mnemonicParsing="false" text="Cancel" />
+            <Button fx:id="btnCancelUpload" cancelButton="true" layoutX="267.0" layoutY="121.0" mnemonicParsing="false" onAction="#onBtnCancelUpload" text="Cancel" />
             <Hyperlink fx:id="linkAccueil" layoutX="253.0" layoutY="50.0" onAction="#onAccueil" text="Accueil">
                <font>
                   <Font size="18.0" />
