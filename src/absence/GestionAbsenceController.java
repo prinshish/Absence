@@ -66,24 +66,29 @@ public class GestionAbsenceController implements Initializable {
     @FXML
     private Hyperlink linkAccueil;
 
+    
     @FXML
-    private ComboBox<String> periodCombo;
     private TableColumn<absence1, String> abs;
     @FXML
     private TableColumn<absence1, String> CNE;
+    @FXML
     private TableColumn<absence1, String> colNom;
+    @FXML
     private TableColumn<absence1, String> ColPrenom;
-    @FXML
-    private TableColumn<?, ?> avant;
-    @FXML
-    private TableColumn<?, ?> apres;
     @FXML
     private Button done;
     @FXML
     private TextField justT;
     @FXML
     private TextField cneT;
+    private TextField txtCNE;
+    @FXML
+    private TextField txtJust;
+    @FXML
+    private TextField txtAbs;
     
+
+
 
     private void fillComboM(){
        matiereCombo.getItems().clear();
@@ -137,7 +142,7 @@ public class GestionAbsenceController implements Initializable {
          table.getItems().clear();
         ResultSet Rs;
       
-        Rs = daoM.PrintA(); //AP1 was just to test !!!!!!!!
+        Rs = daoM.PrintA(matiereCombo.getValue()); //AP1 was just to test !!!!!!!!
         
          
          try {
@@ -161,7 +166,6 @@ public class GestionAbsenceController implements Initializable {
        CNE.setCellValueFactory(new PropertyValueFactory<absence1,String> ("CNE"));
        just.setCellValueFactory(new PropertyValueFactory<absence1,String> ("Justificatif"));
       abs.setCellValueFactory(new PropertyValueFactory<absence1,String> ("absence"));
-      fillPeriodCombo();
       
         // TODO
         fillComboClass();
@@ -183,15 +187,7 @@ public class GestionAbsenceController implements Initializable {
     public void setChecked(final java.lang.Boolean checked) {
         this.checkedProperty().set(checked);
     }
-    
-    private void fillPeriodCombo(){
 
-        periodCombo.getItems().addAll(
-    "Avant Pause",
-    "Après Pause"
-);
-           
-      }
    
 }
 
