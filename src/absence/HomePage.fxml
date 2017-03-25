@@ -53,5 +53,10 @@
             <Font size="20.0" />
          </font></Button>
       <Button fx:id="Iddeco" layoutX="764.0" mnemonicParsing="false" onAction="#onDeco" text="Déconnexion" />
+      <Button fx:id="btnAbsence" layoutX="296.0" layoutY="448.0" mnemonicParsing="false" onAction="#absence" prefHeight="44.0" prefWidth="218.0" text="Gestion d'Absence" textAlignment="CENTER" textFill="#0d0000">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

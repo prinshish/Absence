@@ -21,7 +21,7 @@ public class DaoMatiere {
     public DaoMatiere(){
         dao=new DAO();
         dao.setPilote("com.mysql.jdbc.Driver");
-        dao.setURL("jdbc:mysql://localhost:3306/absence");
+        dao.setURL("jdbc:mysql://localhost/absence");
         dao.setLogin("root");
         dao.setPasswd("");
         dao.ToConnect();
@@ -105,11 +105,27 @@ public class DaoMatiere {
         
         return Rs;
        }
+       
        public ResultSet printIDModule(){
             ResultSet Rs =null;
            
              try{
             String Req = "select id_module  from module ";
+            Statement St = MaConnexion.createStatement();
+            Rs = St.executeQuery(Req);
+             }
+             
+            catch (SQLException ex)
+              {
+                  System.out.println(ex+"aaaaaaaaaaa");}
+             return Rs;
+         
+       }
+       public ResultSet printIDMatiere(){
+            ResultSet Rs =null;
+           
+             try{
+            String Req = "select id_matiere from matiere ";
             Statement St = MaConnexion.createStatement();
             Rs = St.executeQuery(Req);
              }
@@ -169,6 +185,23 @@ public class DaoMatiere {
               {
                   System.out.println(ex);}
               return id;
+       }
+        public ResultSet PrintA(){
+                
+        ResultSet Rs = null;
+        
+       
+        try{
+              PreparedStatement St=MaConnexion.prepareStatement("Select matiere.id_matiere , matiere.nom,module.id_module,personne.nom,personne.prenom from matiere join module on matiere.id_module=module.id_module join personne on matiere.id_personne=personne.id_personne where personne.type='prof'");
+            
+              Rs=St.executeQuery();
+            
+        }
+        catch(SQLException ex){
+            System.err.println("Pb dans la requete Select matiere."+ex.getMessage());
+        }
+        
+        return Rs;
        }
        
 }
