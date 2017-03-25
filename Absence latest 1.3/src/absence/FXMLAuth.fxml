@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="364.0" prefWidth="546.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="absence.FXMLDocumentController">
+    <children>
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <Button fx:id="btnCnx" layoutX="307.0" layoutY="194.0" mnemonicParsing="false" onAction="#Connexion" text="Connexion" />
+      <TextField fx:id="txtLogin" layoutX="126.0" layoutY="95.0" prefHeight="25.0" prefWidth="244.0" promptText="Login" />
+      <PasswordField fx:id="txtPwd" layoutX="126.0" layoutY="137.0" prefHeight="25.0" prefWidth="244.0" promptText="Password" />
+      <Hyperlink layoutX="125.0" layoutY="171.0" onAction="#Connexion" text="Mdp Oublié" />
+      <Label fx:id="invalid_label" layoutX="147.0" layoutY="211.0" />
+    </children>
+</AnchorPane>

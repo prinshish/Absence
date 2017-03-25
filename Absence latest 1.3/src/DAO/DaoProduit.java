@@ -41,26 +41,6 @@ public class DaoProduit {
         return false;
     }
     
-    public int selectNbStudents(String id) throws SQLException{
-     
-     ResultSet res=null;
-     int count=0;
-       try 
-        {
-            Statement St = MaConnexion.createStatement();
-            PreparedStatement pst = MaConnexion.prepareStatement("SELECT COUNT(*) FROM student where id_classe= ?  ");
-            pst.setString(1,id);
-            res=pst.executeQuery();
-                while (res.next()){
-                    count = res.getInt(1);
-                }
-        } 
-        catch (SQLException ex) 
-        {  
-        System.err.println("Erreur dans la requete select count Students !!!"); 
-        }
-       return count;
- }
     public void addFiliere(String id, String nom){
         Statement St;
         try{
@@ -71,19 +51,6 @@ public class DaoProduit {
         }
         catch(SQLException ex){
             System.err.println("erreur d'ajout filière "+ex.getMessage());
-        }
-    }
-    
-    public void updateEffectif(String id, int eff){
-        Statement St;
-        try{
-            PreparedStatement pst = MaConnexion.prepareStatement(" update classe set effectif=? where id_classe=? ");
-            pst.setInt(1,eff);
-            pst.setString(2,id);
-            pst.executeUpdate();
-        }
-        catch(SQLException ex){
-            System.err.println("erreur update Effectif "+ex.getMessage());
         }
     }
     
@@ -101,7 +68,7 @@ public class DaoProduit {
             pst.executeUpdate();
         }
         catch(SQLException ex){
-            System.err.println("erreur d'ajout "+type+" "+ex.getMessage());
+            System.err.println("erreur d'ajout prof "+ex.getMessage());
         }
     }
     

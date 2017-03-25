@@ -56,7 +56,7 @@
                                 <columns>
                                   <TableColumn fx:id="colNameC" prefWidth="141.0" text="Nom" />
                                   <TableColumn fx:id="colFilClass" prefWidth="146.0" text="Filière" />
-                                    <TableColumn fx:id="colEff" prefWidth="59.0" text="Effectif" />
+                                    <TableColumn fx:id="colEff" prefWidth="47.0" text="Effectif" />
                                 </columns>
                               </TableView>
                               <TextField fx:id="NomC" layoutX="150.0" layoutY="39.0" />

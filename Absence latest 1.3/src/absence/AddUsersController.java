@@ -29,8 +29,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
@@ -195,10 +193,9 @@ public class AddUsersController implements Initializable {
 
     }
 
-
     @FXML
     private void onAccueil(ActionEvent event) throws IOException {
-         Parent home_page_parent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Parent home_page_parent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
         Scene home_page_scene = new Scene(home_page_parent);
         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
           

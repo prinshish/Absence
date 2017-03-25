@@ -5,7 +5,6 @@
  */
 package absence;
 
-import DAO.DaoMatiere;
 import DAO.DaoProduit;
 import java.io.IOException;
 import java.net.URL;
@@ -45,17 +44,14 @@ import net.proteanit.sql.DbUtils;
  *
  * @author Zineb Regragui
  */
-public class GestionModuleController1 implements Initializable {
+public class GestionModuleController implements Initializable {
     DaoProduit dao = new DaoProduit();
     private Stage local_stage ;
     @FXML
     private Hyperlink linkAccueil;
     
     private ObservableList <Module> Data_Mod = FXCollections.observableArrayList();
-    private ObservableList <Classe> Data_Box = FXCollections.observableArrayList();
-      private ObservableList <Module> Data_Box1 = FXCollections.observableArrayList(); 
-     private ObservableList <Prof> Data_Box2 = FXCollections.observableArrayList(); 
-     private ObservableList <Matiere> Data_Mat = FXCollections.observableArrayList();
+    private ObservableList <Classe> Data_Box = FXCollections.observableArrayList(); 
     
     @FXML
     private Button btnOkMod;
@@ -78,9 +74,7 @@ public class GestionModuleController1 implements Initializable {
     @FXML
     private ComboBox<String> comboClasse;
     private ObservableList <String> comboString = FXCollections.observableArrayList();
-      private ObservableList <String> comboString3 = FXCollections.observableArrayList();
-    private ObservableList <String> comboString2 = FXCollections.observableArrayList();
-      private DaoMatiere daoM=new DaoMatiere();
+    
     
 //    
 //    @FXML
@@ -109,27 +103,19 @@ public class GestionModuleController1 implements Initializable {
     @FXML
     private Button okbutton;
     @FXML
+    private ComboBox<?> comboFiliere;
+    @FXML
+    private TableView<?> TableC;
+    @FXML
+    private TableColumn<?, ?> colNameC;
+    @FXML
+    private TableColumn<?, ?> colFilClass;
+    @FXML
+    private TableColumn<?, ?> colEff;
+    @FXML
     private TextField NomC;
     @FXML
-    private ComboBox<String> comboModule;
-    @FXML
-    private TableView<Matiere> TableM;
-    @FXML
-    private TableColumn<Matiere, String> colNameM;
-    @FXML
-    private TableColumn<Matiere, String> colModule;
-    @FXML
-    private TableColumn<Matiere, String> colNomProf;
-    @FXML
-    private TableColumn<Matiere, String> colPreProf;
-    @FXML
-    private Button btnCancelM;
-    @FXML
-    private ComboBox<String> comboProf;
-    @FXML
-    private TextField txtIDM;
-    @FXML
-    private TableColumn<Matiere, String> ColIdMatiere;
+    private Button btnCancelC;
 
     
     
@@ -145,20 +131,15 @@ public class GestionModuleController1 implements Initializable {
        colIdMod.setCellValueFactory(new PropertyValueFactory<Module,String> ("id_module"));
        colNomMod.setCellValueFactory(new PropertyValueFactory<Module,String> ("nom"));
        colClasseMod.setCellValueFactory(new PropertyValueFactory<Module,String> ("id_classe"));
-       colNameM.setCellValueFactory(new PropertyValueFactory<Matiere,String> ("NomMatiere"));
-       colNomProf.setCellValueFactory(new PropertyValueFactory<Matiere,String> ("Nomprof"));
-       colPreProf.setCellValueFactory(new PropertyValueFactory<Matiere,String> ("preProf"));
-       colModule.setCellValueFactory(new PropertyValueFactory<Matiere,String> ("Module"));
-       ColIdMatiere.setCellValueFactory(new PropertyValueFactory<Matiere,String> ("id_matiere"));
+//       colNameC.setCellValueFactory(new PropertyValueFactory<Classe,String> ("id_classe"));
+//       colFilClass.setCellValueFactory(new PropertyValueFactory<Classe,String> ("id_filiere"));
+//       colEff.setCellValueFactory(new PropertyValueFactory<Classe,Integer> ("effectif"));
+//       comboFiliere.setPromptText("Choisissez la filière"); 
        actualiser_Mod();
 //       actualiser_C();
        show_in_textfiled_Mod(); 
 //       show_in_textfiledC();
        fillCombo();
-       fillComboMo();
-       fillComboP();
-        actualiser_Mat();
-          show_in_textfiled_Mat();
     }    
     
     //this is the code to get les info dial les classes w t3mrihoum f tableview
@@ -413,129 +394,22 @@ public class GestionModuleController1 implements Initializable {
        return this.local_stage;
     }
 
+    @FXML
+    private void onDeleteClass(ActionEvent event) {
+    }
+
+    @FXML
+    private void onOkclasse(ActionEvent event) {
+    }
 
     @FXML
     private void mouseclickClass(MouseEvent event) {
-         btnDelete.setVisible(true);
-        btnCancelM.setVisible(true);
-        okbutton.setText("Edit");
-        txtIDM.setDisable(true);
     }
 
     @FXML
-    private void btnCancelC() {
-           btnDelete.setVisible(false);
-        btnCancelM.setVisible(false);
-        okbutton.setText("Ok");
-       txtIDM.setDisable(false);
-        fillComboMo();
-        fillComboP();
-        clear_Mat();
+    private void btnCancelC(ActionEvent event) {
     }
 
-    @FXML
-    private void onDeleteMat(ActionEvent event) {
-         daoM.deleteMatiere(txtIDM.getText());
-       // daoM.deleteMatiere(11);
-         actualiser_Mat();
-    }
-
-    @FXML
-    private void onOkMatiere(ActionEvent event) {
-         if(okbutton.getText()=="Edit"){
-        daoM.updateMatiere(comboModule.getValue(),NomC.getText(),daoM.getIdProf(comboProf.getValue()),txtIDM.getText());
-        // daoM.updateMatiere(comboModule.getValue(),NomC.getText(),daoM.getIdProf(comboProf.getValue()),9);
-       //System.out.println("id mat"+Integer.parseInt(txtIDM.getText()));
-         }
-         
-        else {
-        daoM.addMatiere(txtIDM.getText(), NomC.getText(),comboModule.getValue(), daoM.getIdProf(comboProf.getValue()));
-        }
-        actualiser_Mat();
-    }
-    private void actualiser_Mat(){
- TableM.getItems().clear();
-        ResultSet Rs = daoM.PrintM();
-        System.out.println("Try");
-         try {
-         while ( Rs.next())
-           {
-               System.out.println("keep Trying");
-           Data_Mat.add(new Matiere(Rs.getString(1),Rs.getString(3),Rs.getString(4),Rs.getString(5),Rs.getString(2)));
-           TableM.setItems(null);
-           TableM.setItems(Data_Mat);   
-           }
-            btnCancelC();
-         }
-      catch (SQLException ex) 
-        {  
-        System.err.println(ex); }
-    };
- private void clear_Mat(){
-        NomC.clear();
-        comboProf.valueProperty().set(null);
-        comboModule.valueProperty().set(null);
-        
-    }
-  private void fillComboMo(){
-       comboModule.getItems().clear();
-        ResultSet Rs = daoM.printIDModule();
-         try {
-         while ( Rs.next())
-           {
-               
-            
-           Data_Box1.add(new Module(Rs.getString(1)));//(new User(rs.getString("username")).getUserName()
-           comboString2.add(Rs.getString(1));
-           comboModule.setItems(null);
-           comboModule.setItems(comboString2);   
-           }
-         }
-      catch (SQLException ex) 
-        {  
-        System.err.println(ex); }
-   }
-       private void fillComboP(){
-       comboProf.getItems().clear();
-        ResultSet Rs = daoM.PrintNomProf();
-         try {
-         while ( Rs.next())
-           {
-               
-            
-           Data_Box2.add(new Prof(Rs.getString(1)));//(new User(rs.getString("username")).getUserName()
-           comboString3.add(Rs.getString(1));
-           comboProf.setItems(null);
-           comboProf.setItems(comboString3);   
-           }
-         }
-      catch (SQLException ex) 
-        {  
-        System.err.println(ex); }
-   }
-
- private void  show_in_textfiled_Mat()
-    { 
-       
-       TableM.getSelectionModel().selectedItemProperty().addListener(new ChangeListener <Matiere> () {
-       @Override
-    
-    public void changed(ObservableValue<? extends Matiere> observableValue, Matiere oldValue, Matiere newValue) {
-        //Check whether item is selected and set value of selected item to Label
-        if(TableM.getSelectionModel().getSelectedItem() != null) 
-        {
-       
-        txtIDM.setText(newValue.getId_matiere());
-        NomC.setText(newValue.getNomMatiere());
-        comboProf.setValue(newValue.getNomprof());
-        comboModule.setValue(newValue.getModule());
-        }
-    }
-
-     });
-         
-    }
- 
 
 }
     
