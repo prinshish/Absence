@@ -27,6 +27,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 /**
@@ -76,6 +77,12 @@ public class GestionAbsenceController implements Initializable {
     private TableColumn<?, ?> avant;
     @FXML
     private TableColumn<?, ?> apres;
+    @FXML
+    private Button done;
+    @FXML
+    private TextField justT;
+    @FXML
+    private TextField cneT;
     
 
     private void fillComboM(){
