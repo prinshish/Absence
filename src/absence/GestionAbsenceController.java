@@ -26,6 +26,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 /**
  * FXML Controller class
@@ -35,28 +36,25 @@ import javafx.stage.Stage;
 public class GestionAbsenceController implements Initializable {
 
     DaoProduit dao = new DaoProduit();
-    DaoMatiere dm =
+   // DaoMatiere dm =new DaoMatiere();
     private ObservableList <String> comboString = FXCollections.observableArrayList();
     private ObservableList <String> comboString3 = FXCollections.observableArrayList();
     private ObservableList <String> comboString2 = FXCollections.observableArrayList();
     private ObservableList <Classe> Data_Box = FXCollections.observableArrayList();
+    private ObservableList <Matiere> Data_Box1 = FXCollections.observableArrayList();
+
     private DaoMatiere daoM=new DaoMatiere();
     @FXML
     private Button valider;
 
     @FXML
-    private TableView<?> table;
+    private TableView<absence1> table;
+
 
     @FXML
-    private TableColumn<?, ?> avp;
-
+    private TableColumn<absence1, String> just;
     @FXML
-    private TableColumn<?, ?> app;
-
-    @FXML
-    private TableColumn<?, ?> just;
-    @FXML
-    private ComboBox<?> matiereCombo;
+    private ComboBox<String> matiereCombo;
 
     @FXML
     private ComboBox<String> classeCombo;
@@ -65,20 +63,29 @@ public class GestionAbsenceController implements Initializable {
     private Hyperlink linkAccueil;
 
     @FXML
-    private ComboBox<?> periodCombo;
+    private ComboBox<String> periodCombo;
+    @FXML
+    private TableColumn<absence1, String> abs;
+    @FXML
+    private TableColumn<absence1, String> CNE;
+    @FXML
+    private TableColumn<absence1, String> colNom;
+    @FXML
+    private TableColumn<absence1, String> ColPrenom;
 
     private void fillComboM(){
-       comboProf.getItems().clear();
-        ResultSet Rs = daoM.PrintNomProf();
+       matiereCombo.getItems().clear();
+        ResultSet Rs = daoM.printIDMatiere();
          try {
          while ( Rs.next())
            {
                
             
-           Data_Box2.add(new Prof(Rs.getString(1)));//(new User(rs.getString("username")).getUserName()
+           Data_Box1.add(new Matiere(Rs.getString(1)));//(new User(rs.getString("username")).getUserName()
            comboString3.add(Rs.getString(1));
-           comboProf.setItems(null);
-           comboProf.setItems(comboString3);   
+           
+           matiereCombo.setItems(null);
+           matiereCombo.setItems(comboString2);   
            }
          }
       catch (SQLException ex) 
@@ -114,9 +121,29 @@ public class GestionAbsenceController implements Initializable {
                 app_stage.setScene(home_page_scene);
                 app_stage.show();
     }
+    public void actualiser(){
+//         table.getItems().clear();
+//        ResultSet Rs;
+//      
+//        Rs = daoM.PrintStudent(); //AP1 was just to test !!!!!!!!
+//        else
+//          Rs=dao.PrintStudent1(comboClasse.getValue());
+//         try {
+//         while ( Rs.next())
+//           {
+//           Data.add(new Student( Rs.getString(1),Rs.getString(2),Rs.getString(3),Rs.getString(4),Rs.getString(5))); //I didn't include id_filiere
+//           TableS.setItems(null);
+//           TableS.setItems(Data);   
+//           }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+         colNom.setCellValueFactory(new PropertyValueFactory<absence1,String> ("Nom"));
+        ColPrenom.setCellValueFactory(new PropertyValueFactory<absence1,String> ("Prenom"));
+       CNE.setCellValueFactory(new PropertyValueFactory<absence1,String> ("CNE"));
+       just.setCellValueFactory(new PropertyValueFactory<absence1,String> ("Justificatif"));
+      abs.setCellValueFactory(new PropertyValueFactory<absence1,String> ("absence"));
         // TODO
     }    
     

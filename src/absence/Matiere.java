@@ -62,4 +62,8 @@ public class Matiere {
         this.Module = Module;
     }
 
+    public Matiere(String id_matiere) {
+        this.id_matiere = id_matiere;
+    }
+
 }
