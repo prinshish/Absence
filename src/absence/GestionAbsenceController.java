@@ -48,8 +48,6 @@ public class GestionAbsenceController implements Initializable {
     @FXML
     private Button valider;
 
-    @FXML
-    private TableColumn<?, ?> checkBoxTableColumn;
     
     @FXML
     private TableView<absence1> table;
@@ -68,14 +66,16 @@ public class GestionAbsenceController implements Initializable {
 
     @FXML
     private ComboBox<String> periodCombo;
-    @FXML
     private TableColumn<absence1, String> abs;
     @FXML
     private TableColumn<absence1, String> CNE;
-    @FXML
     private TableColumn<absence1, String> colNom;
-    @FXML
     private TableColumn<absence1, String> ColPrenom;
+    @FXML
+    private TableColumn<?, ?> avant;
+    @FXML
+    private TableColumn<?, ?> apres;
+    
 
     private void fillComboM(){
        matiereCombo.getItems().clear();
