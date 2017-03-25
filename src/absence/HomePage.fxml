@@ -40,7 +40,7 @@
             <ColorAdjust brightness="-0.42" contrast="-0.23" hue="-0.53" saturation="-0.93" />
          </effect>
       </Separator>
-      <Button fx:id="btnAdd" layoutX="296.0" layoutY="191.0" mnemonicParsing="false" onAction="#onAddAction" prefHeight="44.0" prefWidth="218.0" text="Ajouter Utilisateur" textAlignment="CENTER">
+      <Button fx:id="btnAdd" layoutX="296.0" layoutY="191.0" mnemonicParsing="false" onAction="#onAddAction" prefHeight="44.0" prefWidth="218.0" text="Ajouter Professeur" textAlignment="CENTER">
          <font>
             <Font size="20.0" />
          </font></Button>

@@ -31,7 +31,11 @@ public class StructureController implements Initializable {
     @FXML
     private Button idStruct;
     @FXML
-    private Hyperlink idAcceuil;
+    private Hyperlink linkAccueil;
+    @FXML
+    private Hyperlink linkProf;
+    @FXML
+    private Hyperlink linkStructures;
 
     /**
      * Initializes the controller class.
@@ -63,9 +67,41 @@ public class StructureController implements Initializable {
                 app_stage.show();
     }
 
-    @FXML
     private void OnAccueil(ActionEvent event) throws IOException {
          Parent home_page_parent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Scene home_page_scene = new Scene(home_page_parent);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+          
+                app_stage.hide(); //optional
+                app_stage.setScene(home_page_scene);
+                app_stage.show();
+    }
+
+    @FXML
+    private void onAccueil(ActionEvent event) throws IOException {
+        Parent home_page_parent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Scene home_page_scene = new Scene(home_page_parent);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+          
+                app_stage.hide(); //optional
+                app_stage.setScene(home_page_scene);
+                app_stage.show();
+    }
+
+    @FXML
+    private void onLinkProf(ActionEvent event) throws IOException {
+        Parent home_page_parent = FXMLLoader.load(getClass().getResource("addUsers.fxml"));
+        Scene home_page_scene = new Scene(home_page_parent);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+          
+                app_stage.hide(); //optional
+                app_stage.setScene(home_page_scene);
+                app_stage.show();
+    }
+
+    @FXML
+    private void onStructures(ActionEvent event) throws IOException {
+        Parent home_page_parent = FXMLLoader.load(getClass().getResource("gestionModule_1.fxml"));
         Scene home_page_scene = new Scene(home_page_parent);
         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
           

@@ -2,13 +2,14 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="850.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="absence.StructureController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="absence.StructureController">
    <children>
-      <Button fx:id="IdStudents" layoutX="275.0" layoutY="120.0" mnemonicParsing="false" onAction="#OnStudents" prefHeight="84.0" prefWidth="315.0" text="Liste d'Etudiants">
+      <Button fx:id="IdStudents" layoutX="268.0" layoutY="171.0" mnemonicParsing="false" onAction="#OnStudents" prefHeight="84.0" prefWidth="315.0" text="Liste d'Etudiants">
          <font>
             <Font name="System Bold" size="27.0" />
          </font>
@@ -18,10 +19,30 @@
             <Font name="System Bold" size="27.0" />
          </font>
       </Button>
-      <Hyperlink fx:id="idAcceuil" layoutX="26.0" layoutY="14.0" onAction="#OnAccueil" text="Acceuil">
-         <font>
-            <Font size="35.0" />
-         </font>
-      </Hyperlink>
+      <Hyperlink fx:id="linkAccueil" layoutX="253.0" layoutY="50.0" onAction="#onAccueil" text="Accueil">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink fx:id="linkProf" layoutX="392.0" layoutY="50.0" onAction="#onLinkProf" text="Profs" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink fx:id="linkStructures" layoutX="514.0" layoutY="50.0" onAction="#onStructures" text="Modules">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Hyperlink>
+            <Separator layoutX="478.0" layoutY="56.0" orientation="VERTICAL" prefHeight="23.0" prefWidth="5.0">
+               <effect>
+                  <ColorAdjust brightness="-0.42" contrast="-0.23" hue="-0.53" saturation="-0.93" />
+               </effect>
+            </Separator>
+            <Separator layoutX="354.0" layoutY="56.0" orientation="VERTICAL" prefHeight="23.0" prefWidth="5.0">
+               <effect>
+                  <ColorAdjust brightness="-0.42" contrast="-0.23" hue="-0.53" saturation="-0.93" />
+               </effect>
+            </Separator>
    </children>
 </AnchorPane>

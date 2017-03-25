@@ -70,6 +70,17 @@ public class HomePageController implements Initializable {
 
 
     @FXML
+    private void onUserAction(ActionEvent event) throws IOException {
+        Parent home_page_parent = FXMLLoader.load(getClass().getResource("addUsers.fxml"));
+        Scene home_page_scene = new Scene(home_page_parent);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+          
+                app_stage.hide(); //optional
+                app_stage.setScene(home_page_scene);
+                app_stage.show();
+    }
+    
+    @FXML
     void absence(ActionEvent event) throws IOException {
         Parent home_page_parent = FXMLLoader.load(getClass().getResource("gestionAbsence.fxml"));
         Scene home_page_scene = new Scene(home_page_parent);
@@ -79,12 +90,17 @@ public class HomePageController implements Initializable {
                 app_stage.setScene(home_page_scene);
                 app_stage.show();
     }
-    @FXML
-    private void onUserAction(ActionEvent event) {
-    }
+
 
     @FXML
-    private void onlinkModuleAction(ActionEvent event) {
+    private void onlinkModuleAction(ActionEvent event) throws IOException {
+        Parent home_page_parent = FXMLLoader.load(getClass().getResource("gestionModule_1.fxml"));
+        Scene home_page_scene = new Scene(home_page_parent);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+          
+                app_stage.hide(); //optional
+                app_stage.setScene(home_page_scene);
+                app_stage.show();
     }
 
     @FXML

@@ -78,12 +78,12 @@
                   <Font size="18.0" />
                </font>
             </Hyperlink>
-            <Hyperlink layoutX="392.0" layoutY="50.0" text="Profs" textAlignment="CENTER">
+            <Hyperlink fx:id="linkProf" layoutX="392.0" layoutY="50.0" onAction="#onLinkProf" text="Profs" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </Hyperlink>
-            <Hyperlink layoutX="514.0" layoutY="50.0" text="Modules">
+            <Hyperlink fx:id="linkModule" layoutX="514.0" layoutY="50.0" onAction="#onLinkModule" text="Modules">
                <font>
                   <Font size="18.0" />
                </font>

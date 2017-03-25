@@ -108,6 +108,10 @@ public class GestionStructureController implements Initializable {
     private Button okUpload;
     @FXML
     private Button cancelUpload;
+    @FXML
+    private Hyperlink linkProf;
+    @FXML
+    private Hyperlink linkModule;
 
     
     
@@ -462,6 +466,28 @@ public class GestionStructureController implements Initializable {
     private void onBtnCancelUpload(ActionEvent event) {
         cancelUpload.setVisible(false);
         okUpload.setVisible(false);
+    }
+
+    @FXML
+    private void onLinkProf(ActionEvent event) throws IOException {
+        Parent home_page_parent = FXMLLoader.load(getClass().getResource("addUsers.fxml"));
+        Scene home_page_scene = new Scene(home_page_parent);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+          
+                app_stage.hide(); //optional
+                app_stage.setScene(home_page_scene);
+                app_stage.show();
+    }
+
+    @FXML
+    private void onLinkModule(ActionEvent event) throws IOException {
+        Parent home_page_parent = FXMLLoader.load(getClass().getResource("gestionModule_1.fxml"));
+        Scene home_page_scene = new Scene(home_page_parent);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+          
+                app_stage.hide(); //optional
+                app_stage.setScene(home_page_scene);
+                app_stage.show();
     }
     
 }
