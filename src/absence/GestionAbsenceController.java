@@ -130,7 +130,7 @@ public class GestionAbsenceController implements Initializable {
          table.getItems().clear();
         ResultSet Rs;
       
-        Rs = daoM.PrintA(); //AP1 was just to test !!!!!!!!
+        Rs = daoM.PrintA(matiereCombo.getValue()); //AP1 was just to test !!!!!!!!
         
          
          try {
