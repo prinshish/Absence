@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.collections.*?>
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="absence.GestionAbsenceController">
    <children>
@@ -30,6 +31,8 @@
       <ComboBox fx:id="classeCombo" layoutX="174.0" layoutY="132.0" prefHeight="25.0" prefWidth="150.0" />
       <Hyperlink fx:id="linkAccueil" layoutX="35.0" layoutY="34.0" onAction="#onAccueil" text="Accueil" />
       <Label layoutX="431.0" layoutY="90.0" text="Periode" />
-      <ComboBox fx:id="periodCombo" layoutX="492.0" layoutY="86.0" prefWidth="150.0" />
+      <ComboBox fx:id="periodCombo" layoutX="492.0" layoutY="86.0" prefWidth="150.0" >
+         
+      </ComboBox>
    </children>
 </AnchorPane>

@@ -148,6 +148,8 @@ public class GestionAbsenceController implements Initializable {
        CNE.setCellValueFactory(new PropertyValueFactory<absence1,String> ("CNE"));
        just.setCellValueFactory(new PropertyValueFactory<absence1,String> ("Justificatif"));
       abs.setCellValueFactory(new PropertyValueFactory<absence1,String> ("absence"));
+      fillPeriodCombo();
+      
         // TODO
     }    
     
@@ -165,5 +167,15 @@ public class GestionAbsenceController implements Initializable {
     public void setChecked(final java.lang.Boolean checked) {
         this.checkedProperty().set(checked);
     }
+    
+    private void fillPeriodCombo(){
+
+        periodCombo.getItems().addAll(
+    "Avant Pause",
+    "Après Pause"
+);
+           
+      }
+   
 }
 
