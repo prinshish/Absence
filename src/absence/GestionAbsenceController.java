@@ -12,6 +12,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -47,6 +48,9 @@ public class GestionAbsenceController implements Initializable {
     @FXML
     private Button valider;
 
+    @FXML
+    private TableColumn<?, ?> checkBoxTableColumn;
+    
     @FXML
     private TableView<absence1> table;
 
@@ -147,4 +151,19 @@ public class GestionAbsenceController implements Initializable {
         // TODO
     }    
     
+    private SimpleBooleanProperty checked = new SimpleBooleanProperty(false);
+   // other columns here
+
+    public SimpleBooleanProperty checkedProperty() {
+        return this.checked;
+    }
+
+    public java.lang.Boolean getChecked() {
+        return this.checkedProperty().get();
+    }
+
+    public void setChecked(final java.lang.Boolean checked) {
+        this.checkedProperty().set(checked);
+    }
 }
+

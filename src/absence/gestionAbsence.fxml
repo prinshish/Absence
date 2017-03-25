@@ -11,8 +11,12 @@
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="absence.GestionAbsenceController">
    <children>
       <Button fx:id="valider" layoutX="642.0" layoutY="528.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="132.0" text="Valider" />
-      <TableView fx:id="table" layoutX="44.0" layoutY="201.0" prefHeight="314.0" prefWidth="782.0">
+      <TableView fx:id="table" editable="true" layoutX="44.0" layoutY="201.0" prefHeight="314.0" prefWidth="782.0">
         <columns>
+          <TableColumn prefWidth="138.0" text="CNE" />
+          <TableColumn prefWidth="152.0" text="Nom" />
+            <TableColumn prefWidth="160.0" text="Prenom" />
+            <TableColumn fx:id="checkBoxTableColumn" prefWidth="130.0" text="Absence" />
           <TableColumn fx:id="CNE" prefWidth="138.0" text="CNE" />
           <TableColumn fx:id="colNom" prefWidth="152.0" text="Nom" />
             <TableColumn fx:id="ColPrenom" prefWidth="160.0" text="Prenom" />
